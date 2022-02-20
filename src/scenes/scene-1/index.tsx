@@ -31,7 +31,6 @@ async function onSceneMount(scene: Scene) {
   light.intensity = 10;
   const obstacles = new Obstacles(scene, player as any);
   await obstacles.init();
-  await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "trash.glb", scene);
 
   let moveOpts = {
     canJump: false,

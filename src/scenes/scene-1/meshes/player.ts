@@ -1,4 +1,4 @@
-import { PhysicsImpostor, Scene, SceneLoader, Vector3 } from '@babylonjs/core';
+import { PhysicsImpostor, Scene, SceneLoader, StandardMaterial, Vector3 } from '@babylonjs/core';
 
 export async function createPlayer(scene: Scene) {
   const player = await SceneLoader.ImportMeshAsync("", `assets/scene-1/meshes/`, "untitled.glb", scene);

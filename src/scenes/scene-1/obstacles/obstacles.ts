@@ -1,4 +1,4 @@
-import { Mesh, Scene, SceneLoader } from '@babylonjs/core';
+import { Mesh, Scene, SceneLoader, Vector3 } from '@babylonjs/core';
 import { IObstacles } from './types';
 
 export class Obstacles implements IObstacles {
@@ -58,17 +58,33 @@ export class Obstacles implements IObstacles {
     obstacle.position.z = 3.55;
     obstacle.position.y = -1;
     obstacle.position.x = 3;
-    obstacle.rotationQuaternion = null;
-    obstacle.rotation.x = Math.PI / 2;
-
+    
     this.activeObstacles.push(obstacle);
   }
-
+  
   async init() {
     const trash = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "trash.glb", this.scene);
+    trash.meshes[0].rotationQuaternion = null;
+    trash.meshes[0].rotation.x = Math.PI / 2;
+
+    const busstop = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "busstop.glb", this.scene);
+    busstop.meshes[0].rotationQuaternion = null;
+    busstop.meshes[0].rotation.z = Math.PI / 2;
+
+    const trashcan = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "trashcan.glb", this.scene);
+    trashcan.meshes[0].rotationQuaternion = null;
+    trashcan.meshes[0].rotation.x = Math.PI / 2;
+
+    const dog = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "dog.glb", this.scene);
+    dog.meshes[0].scaling = new Vector3(0.6, 0.6, 0.6);
+    dog.meshes[0].rotationQuaternion = null;
+    dog.meshes[0].rotation.y = Math.PI / 2;
 
     this.obstacles = [
       trash.meshes[0],
+      busstop.meshes[0],
+      trashcan.meshes[0],
+      dog.meshes[0],
     ];
   }
 
