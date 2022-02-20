@@ -1,4 +1,4 @@
-import { Mesh, MeshBuilder, Scene } from '@babylonjs/core';
+import { Mesh, Scene, SceneLoader } from '@babylonjs/core';
 import { IObstacles } from './types';
 
 export class Obstacles implements IObstacles {
@@ -6,11 +6,26 @@ export class Obstacles implements IObstacles {
   private currentTime = new Date().getTime();
   private trySpawnTime = new Date().getTime();
   private trySpawnTimeout: number = 0;
+  private activeObstacles: Mesh[] = [];
+  private obstacles: any[] = [];
 
   constructor(
     private scene: Scene, 
     private player: Mesh,
-  ) {}
+  ) {
+    this.scene.onBeforeRenderObservable.add(() => {
+      const animationRatio = this.scene.getAnimationRatio();
+
+      for (let i = this.activeObstacles.length - 1; i >= 0; i--) {
+        this.activeObstacles[i].position.x += -0.05 * animationRatio;
+
+        if (this.player.intersectsMesh(this.activeObstacles[i])) {
+          this.activeObstacles[i].dispose(true);
+          this.activeObstacles.splice(i, 1);
+        }
+      }
+    });
+  }
 
   private canSpawn(minDelay: number, maxDelay: number) {
     const isMaxDelay = this.currentTime - this.prevTime > maxDelay;
@@ -34,25 +49,27 @@ export class Obstacles implements IObstacles {
   }
 
   private generateObstacle() {
-    return MeshBuilder.CreateBox('obstacle', { width: 0.1, height: Math.random(), depth: 1 })
+    return this.obstacles[Math.floor(Math.random() * this.obstacles.length)].clone();
   }
 
   private createObstacle() {
     const obstacle = this.generateObstacle();
   
     obstacle.position.z = 3.55;
-    obstacle.position.y = -0.75;
-    obstacle.position.x = 1.5;
+    obstacle.position.y = -1;
+    obstacle.position.x = 3;
+    obstacle.rotationQuaternion = null;
+    obstacle.rotation.x = Math.PI / 2;
 
-    const observer = this.scene.onBeforeRenderObservable.add(() => {
-      const animationRatio = this.scene.getAnimationRatio();
-      obstacle.position.x += -0.05 * animationRatio;
+    this.activeObstacles.push(obstacle);
+  }
 
-      if (this.player.intersectsMesh(obstacle)) {
-        obstacle.dispose(true);
-        this.scene.onBeforeRenderObservable.remove(observer);
-      }
-    });
+  async init() {
+    const trash = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "trash.glb", this.scene);
+
+    this.obstacles = [
+      trash.meshes[0],
+    ];
   }
 
   spawnWithDelay(minDelay: number, maxDelay: number) {

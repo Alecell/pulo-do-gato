@@ -19,26 +19,26 @@ import { move } from './movement/movement';
 import { Obstacles } from './obstacles/obstacles';
 
 
-function onSceneMount(scene: Scene) {
+async function onSceneMount(scene: Scene) {
   scene.enablePhysics(null, new AmmoJSPlugin(false));
   
-  const player = createPlayer(scene);
+  createCamera(scene);
+  createSky(scene);
+  createBackground(scene);
+  const ground = createGround(scene);
+  const player = await createPlayer(scene);
   const light = new HemisphericLight('light', new Vector3(0, 0, 0), scene);
   light.intensity = 10;
-  createCamera(scene);
-  const obstacles = new Obstacles(scene, player);
+  const obstacles = new Obstacles(scene, player as any);
+  await obstacles.init();
+  await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "trash.glb", scene);
 
   let moveOpts = {
     canJump: false,
     jumping: false,
   }
 
-  createSky(scene);
-  createBackground(scene);
-  const ground = createGround(scene);
-  SceneLoader.ImportMeshAsync("Landscape", `/assets/scene-1/meshes`, "landscape.babylon", scene);
-
-  moveOpts = move(scene, player, moveOpts);
+  moveOpts = move(scene, player as any, moveOpts);
   
   scene.onBeforeRenderObservable.add(() => {
     obstacles.spawnWithDelay(1000, 2000);

@@ -35,11 +35,9 @@ export function move(scene: Scene, box: Mesh, opts: IMoveOpts): IMoveOpts {
       player.position.x += 0.1;
     }
     if (inputMap[' '] && tempOpts.canJump) {
-      player.rotation = new Vector3(0,0,0);
       var impulseDirection = new Vector3(0, 1, 0);
       var impulseMagnitude = 4.5;
 
-      
       if (player && player.physicsImpostor) {
         tempOpts.jumping = true;
         tempOpts.canJump = false;
