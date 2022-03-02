@@ -1,5 +1,5 @@
 import { Color3, MeshBuilder, Scene, StandardMaterial, Texture } from '@babylonjs/core';
-import { InfiniteBackground } from '../../../utils/infinite-background';
+import { InfiniteBackground } from '../../../../utils/infinite-background';
 
 export function createBackground(scene: Scene) {
   const background = MeshBuilder.CreatePlane('background', { width: 7, height: 3 });

@@ -1,5 +1,5 @@
 import { Color3, MeshBuilder, PhysicsImpostor, Scene, StandardMaterial, Texture } from '@babylonjs/core';
-import { InfiniteBackground } from '../../../utils/infinite-background';
+import { InfiniteBackground } from '../../../../utils/infinite-background';
 
 export function createGround(scene: Scene) {
   const ground = MeshBuilder.CreateBox('ground', { width: 10, height: 1 });
