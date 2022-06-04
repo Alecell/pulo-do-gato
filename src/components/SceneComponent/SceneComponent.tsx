@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { Engine, Scene } from '@babylonjs/core';
+import { Engine, Scene } from 'babylonjs';
 
 import { ISceneComponent } from './types';
 

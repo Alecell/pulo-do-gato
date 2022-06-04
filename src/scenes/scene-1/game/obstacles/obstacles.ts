@@ -1,30 +1,53 @@
-import { Mesh, MeshBuilder, Scene, SceneLoader } from '@babylonjs/core';
+import { Mesh, MeshBuilder, Scene, SceneLoader, StandardMaterial, Vector3 } from 'babylonjs';
+import { Store } from '../../../../store/store';
 import { IObstacles } from './types';
 
 export class Obstacles implements IObstacles {
   private prevTime = new Date().getTime();
   private currentTime = new Date().getTime();
   private trySpawnTime = new Date().getTime();
+  private obstacleLimit: Mesh | undefined;
   private trySpawnTimeout: number = 0;
-  private activeObstacles: Mesh[] = [];
-  private obstacles: any[] = [];
+  private activeElement: Mesh[] = [];
+  private obstacles: Mesh[] = [];
 
   constructor(
     private scene: Scene, 
     private player: Mesh,
   ) {
+    this.createObstaclesLimit();
+
     this.scene.onBeforeRenderObservable.add(() => {
       const animationRatio = this.scene.getAnimationRatio();
 
-      for (let i = this.activeObstacles.length - 1; i >= 0; i--) {
-        this.activeObstacles[i].position.x += -0.05 * animationRatio;
+      for (let i = this.activeElement.length - 1; i >= 0; i--) {
+        this.activeElement[i].position.x += -0.05 * animationRatio;
 
-        if (this.player.intersectsMesh(this.activeObstacles[i])) {
-          this.activeObstacles[i].dispose(true);
-          this.activeObstacles.splice(i, 1);
+        if (this.jumpedObstacle(this.activeElement[i])) {
+          Store.onUpdateScore.notifyObservers(++Store.score);
+        }
+
+        if (this.shouldDestroyObstacle(this.activeElement[i])) {
+          this.activeElement[i].dispose();
+          this.activeElement.splice(i, 1);
         }
       }
     });
+  }
+
+  private shouldDestroyObstacle(obstacle: Mesh) {
+    return this.player.intersectsMesh(obstacle) || this.obstacleLimit?.intersectsMesh(obstacle);
+  }
+
+  private jumpedObstacle(obstacle: Mesh) {
+    const pointPlane = obstacle.getChildMeshes()[0];
+    const intersected = pointPlane ? pointPlane.intersectsMesh(this.player) : false;
+
+    if (intersected) {
+      pointPlane.dispose();
+    }
+
+    return intersected;
   }
 
   private canSpawn(minDelay: number, maxDelay: number) {
@@ -48,50 +71,63 @@ export class Obstacles implements IObstacles {
     return shouldSpawn;
   }
 
-  private generateObstacle() {
-    return this.obstacles[Math.floor(Math.random() * this.obstacles.length)].clone();
+  private generateElement() {
+    let kind = this.obstacles;
+    
+    const index = Math.floor(Math.random() * kind.length);
+
+    return kind[index].clone();
   }
 
-  private createObstacle() {
-    const obstacle = this.generateObstacle();
+  private spawnObstacle() {
+    const obstacle = this.generateElement();
+    const pointPlane = MeshBuilder.CreatePlane('pointPlane', { width: 1, height: 5 }, this.scene);
+    const planeMaterial = new StandardMaterial('planeMateral', this.scene);
+    pointPlane.rotation.y = Math.PI / 2;
+
+    planeMaterial.alpha = 0;
+    pointPlane.material = planeMaterial;
+
+    obstacle.addChild(pointPlane);
   
     obstacle.position.z = 3.55;
     obstacle.position.y = -1;
     obstacle.position.x = 3;
     
-    this.activeObstacles.push(obstacle);
+    this.activeElement.push(obstacle);
   }
-  
-  async init() {
-    const cube = MeshBuilder.CreateBox('cube', { size: 1 }, this.scene);
 
-    const cubeImported = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "simple.glb", this.scene);
+  private async createObstacles() {
+    const trash = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "trash.babylon", this.scene);
+    trash.meshes[0].rotationQuaternion = null;
+    trash.meshes[0].rotation.x = -Math.PI / 2;
 
-    // const trash = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "trash.glb", this.scene);
-    // trash.meshes[0].rotationQuaternion = null;
-    // trash.meshes[0].rotation.x = Math.PI / 2;
+    const busstop = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "busstop.babylon", this.scene);
+    busstop.meshes[0].rotationQuaternion = null;
+    busstop.meshes[0].rotation.z = Math.PI / 2;
 
-    // const busstop = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "busstop.glb", this.scene);
-    // busstop.meshes[0].rotationQuaternion = null;
-    // busstop.meshes[0].rotation.z = Math.PI / 2;
-
-    // const trashcan = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "trashcan.glb", this.scene);
-    // trashcan.meshes[0].rotationQuaternion = null;
-    // trashcan.meshes[0].rotation.x = Math.PI / 2;
-
-    // const dog = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "dog.glb", this.scene);
-    // dog.meshes[0].scaling = new Vector3(0.6, 0.6, 0.6);
-    // dog.meshes[0].rotationQuaternion = null;
-    // dog.meshes[0].rotation.y = Math.PI / 2;
+    const dog = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "dog.babylon", this.scene);
+    dog.meshes[0].scaling = new Vector3(0.01, 0.01, 0.01);
+    dog.meshes[0].rotationQuaternion = null;
+    dog.meshes[0].rotation.y = -Math.PI / 2;
+    dog.meshes[0].rotation.x = -Math.PI / 2;
 
     this.obstacles = [
-      // cube,
-      cubeImported.meshes[0],
-      // trash.meshes[0],
-      // busstop.meshes[0],
-      // trashcan.meshes[0],
-      // dog.meshes[0],
-    ];
+      trash.meshes[0],
+      busstop.meshes[0],
+      dog.meshes[0],
+    ] as Mesh[];
+  }
+
+  private createObstaclesLimit() {
+    this.obstacleLimit = MeshBuilder.CreatePlane("plane", { width: 10, height: 10 }, this.scene);
+    this.obstacleLimit.position = new Vector3(-10, 0, 3.5);
+    this.obstacleLimit.rotationQuaternion = null;
+    this.obstacleLimit.rotation.y = -Math.PI / 2;
+  }
+  
+  init() {
+    this.createObstacles();
   }
 
   spawnWithDelay(minDelay: number, maxDelay: number) {
@@ -99,7 +135,7 @@ export class Obstacles implements IObstacles {
     this.trySpawnTimeout = Math.floor(minDelay / 4);
 
     if (this.canSpawn(minDelay, maxDelay)) {
-      this.createObstacle();
+      this.spawnObstacle();
     }
   }
 }

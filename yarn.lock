@@ -1138,60 +1138,6 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@babylonjs/core@4.2.1", "@babylonjs/core@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-4.2.1.tgz#9dc57dabf41d259a2343da308ec52575b368e588"
-  integrity sha512-Z2ZVNRKPB1UvmMeqQtxCJKrQtQ/hb5FcAZi66YEEE0MKBQlLmf6oZEM9vS1RljPK7NZoV/dZSdwjJgiQlGsuhA==
-  dependencies:
-    tslib ">=1.10.0"
-
-"@babylonjs/gui@4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@babylonjs/gui/-/gui-4.2.1.tgz#e22e0ddfc456cc816500dd72ad034e1b41a53218"
-  integrity sha512-6gOolbWYFO5lrRWKunawYWQkX4a47dvuiIBrEmY6eKRN97e4f7YrR7oYolqeWFHLXzbn0JR0blOYQyUB5jQqmg==
-  dependencies:
-    "@babylonjs/core" "4.2.1"
-    tslib ">=1.10.0"
-
-"@babylonjs/inspector@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@babylonjs/inspector/-/inspector-4.2.1.tgz#fa6092f22656c23d79b489aef7b2e72e982a9326"
-  integrity sha512-P0l3oAVniyxYJIgpZsAJ3veJnA9Sq02HLsy7Dr3y5UOA8WP0n7X1Uv2T1MbONdTkXJ1YoX/KBfAYVAA81FXhbg==
-  dependencies:
-    "@babylonjs/core" "4.2.1"
-    "@babylonjs/gui" "4.2.1"
-    "@babylonjs/loaders" "4.2.1"
-    "@babylonjs/materials" "4.2.1"
-    "@babylonjs/serializers" "4.2.1"
-    babylonjs-gltf2interface "4.2.1"
-    tslib ">=1.10.0"
-
-"@babylonjs/loaders@4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@babylonjs/loaders/-/loaders-4.2.1.tgz#34bcdf688f6bcb92bcf66de3d8fc297e9830026b"
-  integrity sha512-huLdk18nTqwXHYIbxpXRTo1smcL1eCD8TvvyWiHciRjPttpRNjoACSR/G2J2FD0ymSBu8ZS8cdMvq1by7x2DsA==
-  dependencies:
-    "@babylonjs/core" "4.2.1"
-    babylonjs-gltf2interface "4.2.1"
-    tslib ">=1.10.0"
-
-"@babylonjs/materials@4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@babylonjs/materials/-/materials-4.2.1.tgz#a44ef5c8a4c3d99e16dce27895e5ce4f7d178393"
-  integrity sha512-G4mfmixt2BnATaa2/uhf7xfZv4fqD6bGHocbEWT1Iu0KOJcpU7Q0EYjN8bqx78hVFjd94e4g0/7Bey2JaGrakA==
-  dependencies:
-    "@babylonjs/core" "4.2.1"
-    tslib ">=1.10.0"
-
-"@babylonjs/serializers@4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@babylonjs/serializers/-/serializers-4.2.1.tgz#b7971f89ddbea5382edcd7ef62f6d04e962b63e4"
-  integrity sha512-G4Jw9ILUJp8hO49Jg+sxVAKfYMZlgxGClNrUKCOcsIGWg5Yy0hKd1BZd86wEiyJAYt+MDpuocWCShzkEV2mJhA==
-  dependencies:
-    "@babylonjs/core" "4.2.1"
-    babylonjs-gltf2interface "4.2.1"
-    tslib ">=1.10.0"
-
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
@@ -2791,10 +2737,10 @@ babylon@^6.18.0:
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
   integrity sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==
 
-babylonjs-gltf2interface@4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/babylonjs-gltf2interface/-/babylonjs-gltf2interface-4.2.1.tgz#d23c78a23a16771ad9e7f8f6d20b7c00b5ce0c33"
-  integrity sha512-ZBfKgIoztO1x1nyf9aPQJ+WXmB6Kw0VlyxvcKchIixbICqeeExiN8nmjvypwXC4hl+5ZDMnUKQNrIhh7uzulnA==
+babylonjs@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.2.0.tgz#1c1079d73ec1fbf261e11c214724dcb06cbf8801"
+  integrity sha512-H9U61kPtVhUgssjBBdF9RsBk+IVd0jyC7+hoFoRbpAoBA07/LgZfCQUelfS9Yf5ay3FE51XQVYmSnXCGadn1Sg==
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -10746,11 +10692,6 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@>=1.10.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
-  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
-
 tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
@@ -10854,10 +10795,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.0.3:
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
-  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
+typescript@^4.6.3:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
+  integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"

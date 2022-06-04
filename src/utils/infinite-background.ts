@@ -1,4 +1,4 @@
-import { Mesh, Scene } from '@babylonjs/core';
+import { Mesh, Scene } from 'babylonjs';
 
 export type TInstance = Mesh;
 

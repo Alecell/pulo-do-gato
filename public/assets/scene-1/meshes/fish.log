@@ -1,0 +1,60 @@
+Exporter version: 2.93.5, Blender version: 3.1.2
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  /home/alecell/projects/babylonjs/catrun/public/assets/scene-1/meshes/
+	Python World class constructor completed
+	processing begun of skeleton:  Dummy01, id:  0
+		processing begun of bone:  Fish, index:  0
+		processing begun of bone:  Fish01, index:  1
+		processing begun of bone:  Fish02, index:  2
+		processing begun of bone:  Fish03, index:  3
+		processing begun of bone:  Fish04, index:  4
+		processing begun of bone:  Fish06, index:  5
+		processing begun of bone:  Fish07, index:  6
+		processing begun of bone:  Fish08, index:  7
+		processing begun of bone:  Fish09, index:  8
+		processing begun of bone:  Fish10, index:  9
+		processing begun of bone:  Fish11, index:  10
+		processing begun of bone:  Fish12, index:  11
+		processing begun of bone:  Fish05, index:  12
+		processing begun of bone:  Fish13, index:  13
+		processing begun of bone:  Fish14, index:  14
+		processing begun of bone:  Fish15, index:  15
+		processing begun of bone:  Fish16, index:  16
+		processing begun of bone:  Fish17, index:  17
+		processing begun of bone:  Fish18, index:  18
+		processing begun of bone:  Fish19, index:  19
+		processing begun of bone:  Fish20, index:  20
+		processing begun of bone:  Fish21, index:  21
+		processing begun of bone:  Fish22, index:  22
+		processing begun of bone:  Fish23, index:  23
+		processing begun of bone:  Fish24, index:  24
+		processing begun of bone:  Fish25, index:  25
+		processing action Dummy01|Take 001|BaseLayer:  in[1 - 2], out[0 - 2]
+	processing begun of camera (UniversalCamera):  Camera
+	processing begun of mesh:  Material_#34
+		processing begun of material:  Material_#34
+			processing texture chr_fish_f
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		Custom split normals with tangents being used
+		num positions      :  1803
+		num normals        :  1803
+		num tangents       :  7212
+		num uvs            :  3606
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1174
+	processing begun of light (POINT):  Light
+========= Writing of JSON file started =========
+	writing mesh:  Material_#34
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 0.0773 secs

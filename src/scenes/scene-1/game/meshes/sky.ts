@@ -1,4 +1,4 @@
-import { Color3, MeshBuilder, Scene, StandardMaterial, Texture } from '@babylonjs/core';
+import { Color3, MeshBuilder, Scene, StandardMaterial, Texture } from 'babylonjs';
 
 export function createSky(scene: Scene) {
   const background = MeshBuilder.CreatePlane('sky', { width: 10, height: 4 });

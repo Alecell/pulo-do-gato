@@ -3,11 +3,13 @@ import {
   HemisphericLight,
   Scene,
   AmmoJSPlugin,
-} from '@babylonjs/core';
+  PhysicsImpostor,
+  MeshBuilder,
+} from 'babylonjs';
 
 import SceneComponent from '../../../components/SceneComponent/SceneComponent';
 
-import "@babylonjs/inspector";
+import "babylonjs";
 import { createPlayer } from './meshes/player';
 import { createSky } from './meshes/sky';
 import { createGround } from './meshes/ground';
@@ -15,20 +17,19 @@ import { createBackground } from './meshes/background';
 import { createCamera } from './camera';
 import { move } from './movement/movement';
 import { Obstacles } from './obstacles/obstacles';
-import { memo } from 'react';
-import { IGame } from './types';
+import { memo, useState } from 'react';
 
 
 async function onSceneMount(scene: Scene) {
   scene.enablePhysics(null, new AmmoJSPlugin(false));
   
   createCamera(scene);
-  createSky(scene);
+  // createSky(scene);
   createBackground(scene);
-  const ground = createGround(scene);
+  const { invisibleGround, sliderGround } = createGround(scene);
   const player = await createPlayer(scene);
   const light = new HemisphericLight('light', new Vector3(0, 0, 0), scene);
-  light.intensity = 10;
+  light.intensity = 2;
   const obstacles = new Obstacles(scene, player as any);
   await obstacles.init();
 
@@ -38,23 +39,20 @@ async function onSceneMount(scene: Scene) {
   }
 
   moveOpts = move(scene, player as any, moveOpts);
-  
+
+  player!.physicsImpostor!.registerOnPhysicsCollide(invisibleGround.physicsImpostor!, () => {
+    moveOpts.canJump = true;
+    moveOpts.jumping = false;
+  });
+
   scene.onBeforeRenderObservable.add(() => {
     obstacles.spawnWithDelay(1000, 2000);
-
-    if (player.intersectsMesh(ground)) {
-      moveOpts.canJump = true;
-      moveOpts.jumping = false;
-    } else {
-      moveOpts.canJump = false;
-      moveOpts.jumping = true;
-    }
-  })
+  });
 
   scene.debugLayer.show();
 }
 
-function Game(props: IGame) {
+function Game() {
   return (
     <SceneComponent 
       antialias 

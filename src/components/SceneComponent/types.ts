@@ -1,4 +1,4 @@
-import { EngineOptions, Scene, SceneOptions } from '@babylonjs/core';
+import { EngineOptions, Scene, SceneOptions } from 'babylonjs';
 
 export interface ISceneComponent {
   antialias?: boolean;

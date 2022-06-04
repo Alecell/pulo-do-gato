@@ -1,18 +1,13 @@
-import { Color3, MeshBuilder, Scene, StandardMaterial, Texture } from '@babylonjs/core';
+import { Color3, Mesh, MeshBuilder, Scene, SceneLoader, StandardMaterial, Texture } from 'babylonjs';
 import { InfiniteBackground } from '../../../../utils/infinite-background';
 
-export function createBackground(scene: Scene) {
-  const background = MeshBuilder.CreatePlane('background', { width: 7, height: 3 });
-  const backgroundMaterial = new StandardMaterial('backgroundMaterial', scene);
+export async function createBackground(scene: Scene) {
+  const background = await SceneLoader.ImportMeshAsync("", `assets/scene-1/meshes/`, "city.babylon", scene);
 
-  background.position.z = 4;
+  background.meshes[0].position.z = 7;
+  background.meshes[0].position.y = -1.68;
 
-  backgroundMaterial.diffuseTexture = new Texture("/assets/scene-1/textures/background.png", scene);
-  backgroundMaterial.diffuseTexture.hasAlpha = true;
-  backgroundMaterial.specularColor = new Color3(0, 0, 0);
-  background.material = backgroundMaterial;
+  // new InfiniteBackground(background.meshes[0] as Mesh, scene, {velocityX: -0.005});
 
-  new InfiniteBackground(background, scene, {velocityX: -0.005});
-
-  return background;
+  return background.meshes[0];
 }

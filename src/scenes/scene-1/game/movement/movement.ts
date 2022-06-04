@@ -1,4 +1,4 @@
-import { ActionManager, ExecuteCodeAction, Mesh, Scene, Vector3 } from '@babylonjs/core';
+import { ActionManager, ExecuteCodeAction, Mesh, Scene, Vector3 } from 'babylonjs';
 import { IMoveOpts } from './types';
 
 export function move(scene: Scene, box: Mesh, opts: IMoveOpts): IMoveOpts {
