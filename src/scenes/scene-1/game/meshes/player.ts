@@ -1,8 +1,8 @@
-import { Color3, PhysicsImpostor, Scene, SceneLoader, StandardMaterial } from 'babylonjs';
+import { Color3, Matrix, PhysicsImpostor, Scene, SceneLoader, StandardMaterial, Vector3 } from 'babylonjs';
 
 export async function createPlayer(scene: Scene) {
-  const player = await SceneLoader.ImportMeshAsync("", `assets/scene-1/meshes/`, "cat.babylon", scene);
-  const material = new StandardMaterial('playerMaterial', scene);
+  const player = await SceneLoader.ImportMeshAsync("", `assets/scene-1/meshes/cat/`, "cat.babylon", scene);
+  player.meshes[0].name = "player"
   
   player.meshes[0].normalizeToUnitCube();
   player.meshes[0].parent = null;
@@ -14,12 +14,9 @@ export async function createPlayer(scene: Scene) {
   player.meshes[0].rotation.y += -Math.PI / 2;
   
   player.meshes[0].physicsImpostor = new PhysicsImpostor(player.meshes[0], PhysicsImpostor.BoxImpostor, {
-    mass: 1,
+    mass: 0.8,
     restitution: 0
   });
-
-  material.specularColor = new Color3(1, 1, 1);
-  player.meshes[0].material = material;
 
   return player.meshes[0];
 }

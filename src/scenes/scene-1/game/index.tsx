@@ -5,6 +5,8 @@ import {
   AmmoJSPlugin,
   PhysicsImpostor,
   MeshBuilder,
+  SceneLoader,
+  Color4,
 } from 'babylonjs';
 
 import SceneComponent from '../../../components/SceneComponent/SceneComponent';
@@ -13,18 +15,22 @@ import "babylonjs";
 import { createPlayer } from './meshes/player';
 import { createSky } from './meshes/sky';
 import { createGround } from './meshes/ground';
-import { createBackground } from './meshes/background';
+import { createBackground } from './meshes/city';
 import { createCamera } from './camera';
 import { move } from './movement/movement';
 import { Obstacles } from './obstacles/obstacles';
 import { memo, useState } from 'react';
+import { createMountains } from './meshes/mountains';
+import { createBackgroundCity } from './meshes/predios-bg';
 
 
 async function onSceneMount(scene: Scene) {
   scene.enablePhysics(null, new AmmoJSPlugin(false));
   
   createCamera(scene);
-  // createSky(scene);
+  createBackgroundCity(scene);
+  createSky(scene);
+  createMountains(scene);
   createBackground(scene);
   const { invisibleGround, sliderGround } = createGround(scene);
   const player = await createPlayer(scene);

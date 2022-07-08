@@ -22,18 +22,6 @@ export function move(scene: Scene, box: Mesh, opts: IMoveOpts): IMoveOpts {
   );
 
   newScene.onBeforeRenderObservable.add(() => {
-    if (inputMap.w) {
-      player.position.z += 0.1;
-    }
-    if (inputMap.a) {
-      player.position.x -= 0.1;
-    }
-    if (inputMap.s) {
-      player.position.z -= 0.1;
-    }
-    if (inputMap.d) {
-      player.position.x += 0.1;
-    }
     if (inputMap[' '] && tempOpts.canJump) {
       var impulseDirection = new Vector3(0, 1, 0);
       var impulseMagnitude = 4.5;

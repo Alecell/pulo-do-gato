@@ -1,4 +1,6 @@
 import { Mesh, MeshBuilder, Scene, SceneLoader, StandardMaterial, Vector3 } from 'babylonjs';
+import cloneDeep from 'lodash.clonedeep';
+import { stringify } from 'querystring';
 import { Store } from '../../../../store/store';
 import { IObstacles } from './types';
 
@@ -10,11 +12,14 @@ export class Obstacles implements IObstacles {
   private trySpawnTimeout: number = 0;
   private activeElement: Mesh[] = [];
   private obstacles: Mesh[] = [];
+  private container: Mesh;
+  private obstacleCounter = 0;
 
   constructor(
     private scene: Scene, 
     private player: Mesh,
   ) {
+    this.container = new Mesh("obstacles-container");
     this.createObstaclesLimit();
 
     this.scene.onBeforeRenderObservable.add(() => {
@@ -72,28 +77,32 @@ export class Obstacles implements IObstacles {
   }
 
   private generateElement() {
+    const obstacle = this.obstacleCounter;
     let kind = this.obstacles;
     
     const index = Math.floor(Math.random() * kind.length);
 
-    return kind[index].clone();
+    this.obstacleCounter++;
+
+    return kind[index].clone(`obstacle-${obstacle}`);
   }
 
   private spawnObstacle() {
     const obstacle = this.generateElement();
     const pointPlane = MeshBuilder.CreatePlane('pointPlane', { width: 1, height: 5 }, this.scene);
     const planeMaterial = new StandardMaterial('planeMateral', this.scene);
-    pointPlane.rotation.y = Math.PI / 2;
-
-    planeMaterial.alpha = 0;
-    pointPlane.material = planeMaterial;
-
-    obstacle.addChild(pointPlane);
-  
+    
     obstacle.position.z = 3.55;
     obstacle.position.y = -1;
     obstacle.position.x = 3;
     
+    planeMaterial.alpha = 0;
+    pointPlane.rotation.y = Math.PI / 2;
+    pointPlane.material = planeMaterial;
+    pointPlane.position = new Vector3(3, -1, 3.55);
+
+    obstacle.addChild(pointPlane);
+    this.container.addChild(obstacle);    
     this.activeElement.push(obstacle);
   }
 
@@ -101,16 +110,25 @@ export class Obstacles implements IObstacles {
     const trash = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "trash.babylon", this.scene);
     trash.meshes[0].rotationQuaternion = null;
     trash.meshes[0].rotation.x = -Math.PI / 2;
+    trash.meshes[0].position.z = -100;
+    trash.meshes[0].name = "trash";
+    this.container.addChild(trash.meshes[0]);
 
     const busstop = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "busstop.babylon", this.scene);
     busstop.meshes[0].rotationQuaternion = null;
     busstop.meshes[0].rotation.z = Math.PI / 2;
+    busstop.meshes[0].position.z = -100;
+    busstop.meshes[0].name = "busstop";
+    this.container.addChild(busstop.meshes[0]);
 
     const dog = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "dog.babylon", this.scene);
     dog.meshes[0].scaling = new Vector3(0.01, 0.01, 0.01);
     dog.meshes[0].rotationQuaternion = null;
     dog.meshes[0].rotation.y = -Math.PI / 2;
     dog.meshes[0].rotation.x = -Math.PI / 2;
+    dog.meshes[0].position.z = -100;
+    dog.meshes[0].name = "dog";
+    this.container.addChild(dog.meshes[0]);
 
     this.obstacles = [
       trash.meshes[0],

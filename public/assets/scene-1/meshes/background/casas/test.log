@@ -1,0 +1,406 @@
+Exporter version: 2.93.5, Blender version: 3.2.0
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\junio\OneDrive\Área de Trabalho\Cidaes\test\
+	Python World class constructor completed
+	WARNING: No active camera has been assigned, or is not in a currently enabled collection
+	processing begun of mesh:  Cerulean City House 2
+		processing begun of material:  h_mado
+		processing begun of material:  h_kage
+		processing begun of material:  hdc_h01b
+			processing texture h_mado
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture hdc_h01b
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#0
+		Custom split normals with tangents being used
+		num positions      :  342
+		num normals        :  342
+		num tangents       :  1368
+		num uvs            :  684
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  176
+	processing begun of mesh:  Cherrygrove City House
+		processing begun of material:  h_mado.001
+		processing begun of material:  h_kage.001
+		processing begun of material:  yo_h01_a
+			processing texture h_mado
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture yo_h01_a
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#1
+		Custom split normals with tangents being used
+		num positions      :  260
+		num normals        :  260
+		num tangents       :  1040
+		num uvs            :  520
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  138
+	processing begun of mesh:  Guide Gent's House
+		processing begun of material:  h_mado.002
+		processing begun of material:  yo_h01_b
+		processing begun of material:  h_kage.002
+		processing begun of material:  yo_h01_a.001
+			processing texture h_mado
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture yo_h01_b
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture yo_h01_a
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#2
+		Custom split normals with tangents being used
+		num positions      :  232
+		num normals        :  232
+		num tangents       :  928
+		num uvs            :  464
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  128
+	processing begun of mesh:  Cianwood City Pharmacy
+		processing begun of material:  _h_mado
+		processing begun of material:  _h_kage
+		processing begun of material:  tn_pharmacy_02w
+		processing begun of material:  h_in
+		processing begun of material:  tn_pharmacy_02
+			processing texture h_mado
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture tn_pharmacy_02w
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_in
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture tn_pharmacy_02
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#3
+		Custom split normals with tangents being used
+		num positions      :  295
+		num normals        :  295
+		num tangents       :  1180
+		num uvs            :  590
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  144
+	processing begun of mesh:  Goldenrod City Building 1
+		processing begun of material:  h_mado_lm1
+		processing begun of material:  h_kage_lm1
+		processing begun of material:  wak_h01_a_lm1
+			processing texture h_mado_lm1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage_lm1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture wak_h01_a_lm1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#4
+		Custom split normals with tangents being used
+		num positions      :  237
+		num normals        :  237
+		num tangents       :  948
+		num uvs            :  474
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  136
+	processing begun of mesh:  Goldenrod City Building 2
+		processing begun of material:  h_kage_lm1.001
+		processing begun of material:  wak_h01_a_lm1.001
+		processing begun of material:  h_mado_lm1.001
+		processing begun of material:  lambert5
+			processing texture h_kage_lm1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture wak_h01_a_lm1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_mado_lm1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture lambert5
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#5
+		Custom split normals with tangents being used
+		num positions      :  434
+		num normals        :  434
+		num tangents       :  1736
+		num uvs            :  868
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  252
+	processing begun of mesh:  Jubilife City Building 1
+		processing begun of material:  c1_b01_2
+		processing begun of material:  h_mado.003
+		processing begun of material:  h_kage.003
+		processing begun of material:  c1_b01_1
+		processing begun of material:  c1_b01_3
+			processing texture c1_b01_2
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_mado
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c1_b01_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c1_b01_3
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#6
+		Custom split normals with tangents being used
+		num positions      :  540
+		num normals        :  540
+		num tangents       :  2160
+		num uvs            :  1080
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  316
+	processing begun of mesh:  Jubilife City Building 2
+		processing begun of material:  c1_b01_2.001
+		processing begun of material:  lambert1
+		processing begun of material:  h_mado.004
+		processing begun of material:  h_kage.004
+		processing begun of material:  c1_b01_1.001
+		processing begun of material:  c1_b01_3.001
+			processing texture c1_b01_2
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture lambert1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_mado
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c1_b01_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c1_b01_3
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#7
+		Custom split normals with tangents being used
+		num positions      :  360
+		num normals        :  360
+		num tangents       :  1440
+		num uvs            :  720
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  208
+	processing begun of mesh:  Jubilife City Building 3
+		processing begun of material:  Light
+		processing begun of material:  h_kage.005
+		processing begun of material:  c1_b02_1
+			processing texture Light
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c1_b02_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#8
+		Custom split normals with tangents being used
+		num positions      :  642
+		num normals        :  642
+		num tangents       :  2568
+		num uvs            :  1284
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  386
+	processing begun of mesh:  Jubilife City Building 5
+		processing begun of material:  c1_b03_4
+		processing begun of material:  c1_b03_2
+		processing begun of material:  c1_b03_l
+		processing begun of material:  h_kage.006
+		processing begun of material:  c1_b03_1
+			processing texture c1_b03_4
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c1_b03_2
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c1_b03_l
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c1_b03_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#9
+		Custom split normals with tangents being used
+		num positions      :  495
+		num normals        :  495
+		num tangents       :  1980
+		num uvs            :  990
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  284
+	processing begun of mesh:  Nacrene City Warehouse 1
+		processing begun of material:  lambert15
+		processing begun of material:  lambert14
+		processing begun of material:  yane1
+		processing begun of material:  lambert13
+		processing begun of material:  souko
+			processing texture lambert15
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture lambert14
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture yane1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture lambert13
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture souko
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#10
+		Custom split normals with tangents being used
+		num positions      :  506
+		num normals        :  506
+		num tangents       :  2024
+		num uvs            :  1012
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  250
+	processing begun of mesh:  Nacrene City Warehouse 2
+		processing begun of material:  c2b2y_2
+		processing begun of material:  h_mado_1
+		processing begun of material:  h_kage_1
+		processing begun of material:  c2b2_1
+			processing texture c2b2y_2
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_mado_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c2b2_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#11
+		Custom split normals with tangents being used
+		num positions      :  366
+		num normals        :  366
+		num tangents       :  1464
+		num uvs            :  732
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  178
+	processing begun of mesh:  Nacrene City Warehouse 3
+		processing begun of material:  h_mado_1.001
+		processing begun of material:  h_kage_1.001
+		processing begun of material:  c2b1y_1
+		processing begun of material:  c2b1_1
+			processing texture h_mado_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c2b1y_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c2b1_1
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#12
+		Custom split normals with tangents being used
+		num positions      :  380
+		num normals        :  380
+		num tangents       :  1520
+		num uvs            :  760
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  182
+	processing begun of mesh:  Driftveil City Building
+		processing begun of material:  c5ch
+		processing begun of material:  h_kage.009
+		processing begun of material:  c5ch2
+		processing begun of material:  c5ch3
+			processing texture c5ch
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c5ch2
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture c5ch3
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#13
+		Custom split normals with tangents being used
+		num positions      :  518
+		num normals        :  518
+		num tangents       :  2072
+		num uvs            :  1036
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  260
+	processing begun of mesh:  Oreburgh City House 1
+		processing begun of material:  light
+		processing begun of material:  h_kage.010
+		processing begun of material:  t1_h01
+			processing texture light
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture t1_h01
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#14
+		Custom split normals with tangents being used
+		num positions      :  333
+		num normals        :  333
+		num tangents       :  1332
+		num uvs            :  666
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  172
+	processing begun of mesh:  Oreburgh City House 2
+		processing begun of material:  light.001
+		processing begun of material:  h_kage.011
+		processing begun of material:  t1_h01.001
+			processing texture light
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture t1_h01
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#15
+		Custom split normals with tangents being used
+		num positions      :  315
+		num normals        :  315
+		num tangents       :  1260
+		num uvs            :  630
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  164
+	processing begun of mesh:  Vermilion City House 2
+		processing begun of material:  kbc_mado.001
+		processing begun of material:  h_kage.014
+		processing begun of material:  kbc_h02.001
+			processing texture kbc_mado
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture h_kage
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture kbc_h02
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  test.Multimaterial#16
+		Custom split normals with tangents being used
+		num positions      :  362
+		num normals        :  362
+		num tangents       :  1448
+		num uvs            :  724
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  182
+========= Writing of JSON file started =========
+	writing mesh:  Cerulean City House 2
+	writing mesh:  Cherrygrove City House
+	writing mesh:  Guide Gent's House
+	writing mesh:  Cianwood City Pharmacy
+	writing mesh:  Goldenrod City Building 1
+	writing mesh:  Goldenrod City Building 2
+	writing mesh:  Jubilife City Building 1
+	writing mesh:  Jubilife City Building 2
+	writing mesh:  Jubilife City Building 3
+	writing mesh:  Jubilife City Building 5
+	writing mesh:  Nacrene City Warehouse 1
+	writing mesh:  Nacrene City Warehouse 2
+	writing mesh:  Nacrene City Warehouse 3
+	writing mesh:  Driftveil City Building
+	writing mesh:  Oreburgh City House 1
+	writing mesh:  Oreburgh City House 2
+	writing mesh:  Vermilion City House 2
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 0.3744 secs
