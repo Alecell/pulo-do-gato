@@ -107,33 +107,43 @@ export class Obstacles implements IObstacles {
   }
 
   private async createObstacles() {
-    const trash = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "trash.babylon", this.scene);
+    const trash = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/obstacles/trash/`, "trash.babylon", this.scene);
     trash.meshes[0].rotationQuaternion = null;
+    trash.meshes[0].rotation.y = Math.PI;
     trash.meshes[0].rotation.x = -Math.PI / 2;
     trash.meshes[0].position.z = -100;
     trash.meshes[0].name = "trash";
     this.container.addChild(trash.meshes[0]);
 
-    const busstop = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "busstop.babylon", this.scene);
-    busstop.meshes[0].rotationQuaternion = null;
-    busstop.meshes[0].rotation.z = Math.PI / 2;
-    busstop.meshes[0].position.z = -100;
-    busstop.meshes[0].name = "busstop";
-    this.container.addChild(busstop.meshes[0]);
-
-    const dog = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/`, "dog.babylon", this.scene);
-    dog.meshes[0].scaling = new Vector3(0.01, 0.01, 0.01);
+    const dog = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/obstacles/dog/`, "dog.babylon", this.scene);
+    dog.meshes[0].scaling = new Vector3(0.5, 0.5, 0.5);
     dog.meshes[0].rotationQuaternion = null;
-    dog.meshes[0].rotation.y = -Math.PI / 2;
-    dog.meshes[0].rotation.x = -Math.PI / 2;
+    dog.meshes[0].rotation.y = Math.PI / 2;
     dog.meshes[0].position.z = -100;
     dog.meshes[0].name = "dog";
     this.container.addChild(dog.meshes[0]);
 
+    const cone = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/obstacles/cone/`, "cone.babylon", this.scene);
+    cone.meshes[0].scaling = new Vector3(0.5, 0.5, 0.5); 
+    cone.meshes[0].rotationQuaternion = null;
+    cone.meshes[0].rotation.y = Math.PI / 2;
+    cone.meshes[0].position.z = -100;
+    cone.meshes[0].name = "cone";
+    this.container.addChild(cone.meshes[0]);
+
+    const bucket = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/obstacles/bucket/`, "bucket.babylon", this.scene);
+    bucket.meshes[0].scaling = new Vector3(0.005, 0.005, 0.005); 
+    bucket.meshes[0].rotationQuaternion = null;
+    bucket.meshes[0].rotation.y = Math.PI / 2;
+    bucket.meshes[0].position.z = -100;
+    bucket.meshes[0].name = "bucket";
+    this.container.addChild(bucket.meshes[0]);
+
     this.obstacles = [
       trash.meshes[0],
-      busstop.meshes[0],
+      cone.meshes[0],
       dog.meshes[0],
+      bucket.meshes[0],
     ] as Mesh[];
   }
 

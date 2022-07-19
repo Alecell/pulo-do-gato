@@ -2,7 +2,7 @@ import { Color3, Mesh, MeshBuilder, Scene, StandardMaterial, Texture } from 'bab
 import { InfiniteBackground } from '../../../../utils/infinite-background/infinite-background';
 
 export function createBackgroundCity(scene: Scene) {
-  const city = MeshBuilder.CreatePlane('city', { width: 2, height: 0.5 });
+  const city = MeshBuilder.CreatePlane('city', { width: 2, height: 1 });
   const cityMaterial = new StandardMaterial('cityMaterial', scene);
   const parent = new Mesh("city", scene);
 
@@ -20,12 +20,12 @@ export function createBackgroundCity(scene: Scene) {
     spawnPlace: {
       z: 15,
       x: 26,
-      y: 0
+      y: -0.2
     },
     despawnPlace: {
       z: 15,
       x: -15,
-      y: 0
+      y: -0.2
     }
   })
 

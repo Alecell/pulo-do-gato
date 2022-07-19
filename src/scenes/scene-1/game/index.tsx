@@ -22,6 +22,8 @@ import { Obstacles } from './obstacles/obstacles';
 import { memo, useState } from 'react';
 import { createMountains } from './meshes/mountains';
 import { createBackgroundCity } from './meshes/predios-bg';
+import { createStreet } from './meshes/street';
+import { createFence } from './meshes/fence';
 
 
 async function onSceneMount(scene: Scene) {
@@ -29,6 +31,8 @@ async function onSceneMount(scene: Scene) {
   
   createCamera(scene);
   createBackgroundCity(scene);
+  createStreet(scene);
+  createFence(scene);
   createSky(scene);
   createMountains(scene);
   createBackground(scene);

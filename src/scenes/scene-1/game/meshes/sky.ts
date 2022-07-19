@@ -2,7 +2,7 @@ import { Color3, Mesh, MeshBuilder, Scene, StandardMaterial, Texture } from 'bab
 import { InfiniteBackground } from '../../../../utils/infinite-background/infinite-background';
 
 export function createSky(scene: Scene) {
-  const background = MeshBuilder.CreatePlane('sky', { width: 10, height: 15 });
+  const background = MeshBuilder.CreatePlane('sky', { width: 10, height: 20 });
   const backgroundMaterial = new StandardMaterial('skyMaterial', scene);
   const parent = new Mesh("sky", scene);
 
