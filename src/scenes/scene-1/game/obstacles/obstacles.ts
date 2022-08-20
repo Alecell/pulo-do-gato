@@ -1,6 +1,7 @@
-import { Mesh, MeshBuilder, Scene, SceneLoader, StandardMaterial, Vector3 } from 'babylonjs';
+import { Mesh, MeshBuilder, Scene, SceneLoader, Sound, StandardMaterial, Vector3 } from 'babylonjs';
 import cloneDeep from 'lodash.clonedeep';
 import { stringify } from 'querystring';
+import { IPrefab, IPrefabExposes } from '../../../../interfaces/Prefab';
 import { Store } from '../../../../store/store';
 import { IObstacles } from './types';
 
@@ -17,7 +18,7 @@ export class Obstacles implements IObstacles {
 
   constructor(
     private scene: Scene, 
-    private player: Mesh,
+    private player: IPrefabExposes,
   ) {
     this.container = new Mesh("obstacles-container");
     this.createObstaclesLimit();
@@ -32,21 +33,28 @@ export class Obstacles implements IObstacles {
           Store.onUpdateScore.notifyObservers(++Store.score);
         }
 
-        if (this.shouldDestroyObstacle(this.activeElement[i])) {
-          this.activeElement[i].dispose();
-          this.activeElement.splice(i, 1);
-        }
+        this.checkObstacleHit(this.activeElement[i]);
+        this.checkObstacleHitsLimit(this.activeElement[i], i);
       }
     });
   }
 
-  private shouldDestroyObstacle(obstacle: Mesh) {
-    return this.player.intersectsMesh(obstacle) || this.obstacleLimit?.intersectsMesh(obstacle);
+  private checkObstacleHit(obstacle: Mesh) {
+    if (this.player.mesh?.intersectsMesh(obstacle) && !this.player.states.died) {
+      this.player.events.die();
+    }
+  }
+
+  private checkObstacleHitsLimit(obstacle: Mesh, i: number) {
+    if (this.obstacleLimit?.intersectsMesh(obstacle)) {
+      this.activeElement[i].dispose();
+      this.activeElement.splice(i, 1);
+    }
   }
 
   private jumpedObstacle(obstacle: Mesh) {
     const pointPlane = obstacle.getChildMeshes()[0];
-    const intersected = pointPlane ? pointPlane.intersectsMesh(this.player) : false;
+    const intersected = pointPlane ? pointPlane.intersectsMesh(this.player.mesh!) : false;
 
     if (intersected) {
       pointPlane.dispose();

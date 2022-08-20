@@ -1,0 +1,1 @@
+export type TGenericObject<T = void> = { [key: string]: T extends void ? any : T }

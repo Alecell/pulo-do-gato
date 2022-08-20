@@ -1,11 +1,15 @@
-import { ActionManager, ExecuteCodeAction, Mesh, Scene, Vector3 } from 'babylonjs';
-import { IMoveOpts } from './types';
+import { ActionManager, ExecuteCodeAction, Mesh, Scene, Sound, Vector3 } from 'babylonjs';
+import { IMove } from '../types';
 
-export function move(scene: Scene, box: Mesh, opts: IMoveOpts): IMoveOpts {
+export function move(scene: Scene, box: Mesh, opts: IMove): IMove {
   const tempOpts = { ...opts };
   const inputMap: { [key: string]: boolean } = {};
   const newScene = scene;
   const player = box;
+
+  const jump = new Sound("jump", "/assets/scene-1/songs/jump.mp3", scene, null, {
+    volume: 0.5
+  });
 
   newScene.actionManager = new ActionManager(scene);
 
@@ -22,19 +26,21 @@ export function move(scene: Scene, box: Mesh, opts: IMoveOpts): IMoveOpts {
   );
 
   newScene.onBeforeRenderObservable.add(() => {
-    if (inputMap[' '] && tempOpts.canJump) {
-      var impulseDirection = new Vector3(0, 1, 0);
-      var impulseMagnitude = 4.5;
+    if (inputMap[' '] && tempOpts.jumping.canJump) {
+      const impulseDirection = new Vector3(0, 1, 0);
+      const impulseMagnitude = 4.5;
+
+      jump.play();
 
       if (player && player.physicsImpostor) {
-        tempOpts.jumping = true;
-        tempOpts.canJump = false;
+        tempOpts.jumping.isJumping = true;
+        tempOpts.jumping.canJump = false;
         player.physicsImpostor.setLinearVelocity(new Vector3(0, 0, 0));
         player.physicsImpostor.applyImpulse(impulseDirection.scale(impulseMagnitude), player.getAbsolutePosition());
       }
     }
 
-    player!.physicsImpostor!.setAngularVelocity(new Vector3(0, 0, 0));
+    // player!.physicsImpostor!.setAngularVelocity(new Vector3(0, 0, 0));
   });
 
   return tempOpts;

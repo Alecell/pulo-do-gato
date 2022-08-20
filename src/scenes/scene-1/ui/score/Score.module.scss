@@ -1,10 +1,12 @@
 .score {
-  font-size: 7.4rem;
-  position: relative;
-  top: 115px;
-  left: 121px;
+  font-size: 13rem;
+  position: absolute;
+  top: 5%;
+  right: 13%;
+  font-family: "Comic Sans", cursive;
   font-weight: bold;
   color: white;
+  z-index: 1;
   -webkit-text-fill-color: white; 
   -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: black;

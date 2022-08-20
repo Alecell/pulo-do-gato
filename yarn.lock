@@ -2793,10 +2793,10 @@ babylon@^6.18.0:
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
   integrity sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==
 
-babylonjs@5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.2.0.tgz#1c1079d73ec1fbf261e11c214724dcb06cbf8801"
-  integrity sha512-H9U61kPtVhUgssjBBdF9RsBk+IVd0jyC7+hoFoRbpAoBA07/LgZfCQUelfS9Yf5ay3FE51XQVYmSnXCGadn1Sg==
+babylonjs@5.18.0:
+  version "5.18.0"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.18.0.tgz#59e246785a5c98c583c6c5deb9eb3513123969c8"
+  integrity sha512-d4WrcR3e1FOnOlEtOofRH+OniZT4cx6EuDvKB0OkqnPnjD7ALuo5cmJDQmILWnDTOJRqojK7Psz9etEeNDionA==
 
 balanced-match@^1.0.0:
   version "1.0.2"

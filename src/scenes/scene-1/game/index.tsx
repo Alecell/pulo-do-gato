@@ -7,12 +7,13 @@ import {
   MeshBuilder,
   SceneLoader,
   Color4,
+  Sound,
 } from 'babylonjs';
 
 import SceneComponent from '../../../components/SceneComponent/SceneComponent';
 
 import "babylonjs";
-import { createPlayer } from './meshes/player';
+import { Player } from './meshes/player';
 import { createSky } from './meshes/sky';
 import { createGround } from './meshes/ground';
 import { createBackground } from './meshes/city';
@@ -24,9 +25,11 @@ import { createMountains } from './meshes/mountains';
 import { createBackgroundCity } from './meshes/predios-bg';
 import { createStreet } from './meshes/street';
 import { createFence } from './meshes/fence';
+import { IMove } from './types';
 
 
 async function onSceneMount(scene: Scene) {
+  const engine = scene.getEngine();
   scene.enablePhysics(null, new AmmoJSPlugin(false));
   
   createCamera(scene);
@@ -37,24 +40,33 @@ async function onSceneMount(scene: Scene) {
   createMountains(scene);
   createBackground(scene);
   const { invisibleGround, sliderGround } = createGround(scene);
-  const player = await createPlayer(scene);
+  const player = await new Player(scene);
   const light = new HemisphericLight('light', new Vector3(0, 0, 0), scene);
   light.intensity = 2;
-  const obstacles = new Obstacles(scene, player as any);
+  const obstacles = new Obstacles(scene, player);
   await obstacles.init();
 
-  let moveOpts = {
-    canJump: false,
-    jumping: false,
+  let moveOpts: IMove = {
+    jumping: {
+      canJump: false,
+      isJumping: false,
+      jumpStartTime: 0,
+    },
   }
+  
+  // new Sound("BgMusic", "/assets/scene-1/songs/bg-music.mp3", scene, null, {
+  //   loop: true,
+  //   autoplay: true,
+  //   volume: 0.2,
+  // });
 
   moveOpts = move(scene, player as any, moveOpts);
-
-  player!.physicsImpostor!.registerOnPhysicsCollide(invisibleGround.physicsImpostor!, () => {
-    moveOpts.canJump = true;
-    moveOpts.jumping = false;
+  
+  player.mesh!.physicsImpostor!.registerOnPhysicsCollide(invisibleGround.physicsImpostor!, () => {
+    moveOpts.jumping.canJump = true;
+    moveOpts.jumping.isJumping = false;
   });
-
+  
   scene.onBeforeRenderObservable.add(() => {
     obstacles.spawnWithDelay(1000, 2000);
   });
