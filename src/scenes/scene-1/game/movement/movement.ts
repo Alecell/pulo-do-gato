@@ -1,11 +1,11 @@
 import { ActionManager, ExecuteCodeAction, Mesh, Scene, Sound, Vector3 } from 'babylonjs';
+import { Player } from '../meshes/player';
 import { IMove } from '../types';
 
-export function move(scene: Scene, box: Mesh, opts: IMove): IMove {
+export function move(scene: Scene, player: Player, opts: IMove): IMove {
   const tempOpts = { ...opts };
   const inputMap: { [key: string]: boolean } = {};
   const newScene = scene;
-  const player = box;
 
   const jump = new Sound("jump", "/assets/scene-1/songs/jump.mp3", scene, null, {
     volume: 0.5
@@ -32,11 +32,11 @@ export function move(scene: Scene, box: Mesh, opts: IMove): IMove {
 
       jump.play();
 
-      if (player && player.physicsImpostor) {
+      if (player && player.mesh.physicsImpostor) {
         tempOpts.jumping.isJumping = true;
         tempOpts.jumping.canJump = false;
-        player.physicsImpostor.setLinearVelocity(new Vector3(0, 0, 0));
-        player.physicsImpostor.applyImpulse(impulseDirection.scale(impulseMagnitude), player.getAbsolutePosition());
+        // player.mesh.physicsImpostor.setLinearVelocity(new Vector3(0, 0, 0));
+        // player.mesh.physicsImpostor.applyImpulse(impulseDirection.scale(impulseMagnitude), player.mesh.getAbsolutePosition());
       }
     }
 

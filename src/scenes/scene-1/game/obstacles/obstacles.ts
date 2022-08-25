@@ -1,8 +1,9 @@
 import { Mesh, MeshBuilder, Scene, SceneLoader, Sound, StandardMaterial, Vector3 } from 'babylonjs';
 import cloneDeep from 'lodash.clonedeep';
 import { stringify } from 'querystring';
-import { IPrefab, IPrefabExposes } from '../../../../interfaces/Prefab';
+import { IPrefab } from '../../../../interfaces/Prefab';
 import { Store } from '../../../../store/store';
+import { Player } from '../meshes/player';
 import { IObstacles } from './types';
 
 export class Obstacles implements IObstacles {
@@ -18,7 +19,7 @@ export class Obstacles implements IObstacles {
 
   constructor(
     private scene: Scene, 
-    private player: IPrefabExposes,
+    private player: Player,
   ) {
     this.container = new Mesh("obstacles-container");
     this.createObstaclesLimit();

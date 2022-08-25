@@ -40,7 +40,10 @@ async function onSceneMount(scene: Scene) {
   createMountains(scene);
   createBackground(scene);
   const { invisibleGround, sliderGround } = createGround(scene);
-  const player = await new Player(scene);
+  const player = new Player(scene);
+
+  await player.initMesh();
+
   const light = new HemisphericLight('light', new Vector3(0, 0, 0), scene);
   light.intensity = 2;
   const obstacles = new Obstacles(scene, player);
@@ -60,7 +63,7 @@ async function onSceneMount(scene: Scene) {
   //   volume: 0.2,
   // });
 
-  moveOpts = move(scene, player as any, moveOpts);
+  moveOpts = move(scene, player, moveOpts);
   
   player.mesh!.physicsImpostor!.registerOnPhysicsCollide(invisibleGround.physicsImpostor!, () => {
     moveOpts.jumping.canJump = true;

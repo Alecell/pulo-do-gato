@@ -7,14 +7,14 @@ export interface IPrefab {
 }
 
 export abstract class APrefab implements IPrefab {
-  protected mesh: Nullable<Mesh> = null;
-  protected parent: Nullable<Mesh> = null;
-  protected texture: Nullable<Texture> = null;
-  protected sounds: Nullable<TGenericObject<Sound>> = null;
+  protected _mesh!: Mesh;
+  protected _parent!: Mesh;
+  protected _texture!: Texture;
+  protected _sounds!: TGenericObject<Sound>;
 
-  readonly events = {};
-  readonly states = {};
+  events = {};
+  states = {};
 
-  abstract initSounds(): void;
   abstract initMesh(): void;
+  abstract initSounds(): void;
 }
