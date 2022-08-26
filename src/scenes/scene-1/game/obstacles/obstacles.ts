@@ -3,7 +3,7 @@ import cloneDeep from 'lodash.clonedeep';
 import { stringify } from 'querystring';
 import { IPrefab } from '../../../../interfaces/Prefab';
 import { Store } from '../../../../store/store';
-import { Player } from '../meshes/player';
+import { Player } from '../meshes/player/player';
 import { IObstacles } from './types';
 
 export class Obstacles implements IObstacles {

@@ -13,7 +13,7 @@ import {
 import SceneComponent from '../../../components/SceneComponent/SceneComponent';
 
 import "babylonjs";
-import { Player } from './meshes/player';
+import { Player } from './meshes/player/player';
 import { createSky } from './meshes/sky';
 import { createGround } from './meshes/ground';
 import { createBackground } from './meshes/city';

@@ -1,5 +1,5 @@
 import { ActionManager, ExecuteCodeAction, Mesh, Scene, Sound, Vector3 } from 'babylonjs';
-import { Player } from '../meshes/player';
+import { Player } from '../meshes/player/player';
 import { IMove } from '../types';
 
 export function move(scene: Scene, player: Player, opts: IMove): IMove {
@@ -35,12 +35,10 @@ export function move(scene: Scene, player: Player, opts: IMove): IMove {
       if (player && player.mesh.physicsImpostor) {
         tempOpts.jumping.isJumping = true;
         tempOpts.jumping.canJump = false;
-        // player.mesh.physicsImpostor.setLinearVelocity(new Vector3(0, 0, 0));
-        // player.mesh.physicsImpostor.applyImpulse(impulseDirection.scale(impulseMagnitude), player.mesh.getAbsolutePosition());
+        player.mesh.physicsImpostor.setLinearVelocity(new Vector3(0, 0, 0));
+        player.mesh.physicsImpostor.applyImpulse(impulseDirection.scale(impulseMagnitude), player.mesh.getAbsolutePosition());
       }
     }
-
-    // player!.physicsImpostor!.setAngularVelocity(new Vector3(0, 0, 0));
   });
 
   return tempOpts;
