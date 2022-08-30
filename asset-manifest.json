@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/catrun/static/css/main.eabfa9d6.chunk.css",
-    "main.js": "/catrun/static/js/main.8d0f07e4.chunk.js",
-    "main.js.map": "/catrun/static/js/main.8d0f07e4.chunk.js.map",
+    "main.js": "/catrun/static/js/main.5535e489.chunk.js",
+    "main.js.map": "/catrun/static/js/main.5535e489.chunk.js.map",
     "runtime-main.js": "/catrun/static/js/runtime-main.61bfbe06.js",
     "runtime-main.js.map": "/catrun/static/js/runtime-main.61bfbe06.js.map",
     "static/js/2.f1436160.chunk.js": "/catrun/static/js/2.f1436160.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.61bfbe06.js",
     "static/js/2.f1436160.chunk.js",
     "static/css/main.eabfa9d6.chunk.css",
-    "static/js/main.8d0f07e4.chunk.js"
+    "static/js/main.5535e489.chunk.js"
   ]
 }
