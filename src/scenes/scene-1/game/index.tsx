@@ -14,31 +14,35 @@ import SceneComponent from '../../../components/SceneComponent/SceneComponent';
 
 import { memo } from 'react';
 import { Player } from './meshes/player/player';
-import { createSky } from './meshes/sky';
+import { Sky } from './meshes/sky';
 import { createGround } from './meshes/ground';
-import { createBackground } from './meshes/city';
+import { City } from './meshes/city';
 import { createCamera } from './camera';
 import { move } from './movement/movement';
 import { Obstacles } from './obstacles/obstacles';
-import { createMountains } from './meshes/mountains';
-import { createStreet } from './meshes/street';
-import { createFence } from './meshes/fence';
+import { Mountains } from './meshes/mountains';
+import { Street } from './meshes/street';
+import { Fence } from './meshes/fence';
 import { IMove } from './types';
 
 async function onSceneMount(scene: Scene) {
-  const engine = scene.getEngine();
   scene.enablePhysics(null, new AmmoJSPlugin(false));
   
   createCamera(scene);
-  createStreet(scene);
-  createFence(scene);
-  createSky(scene);
-  createMountains(scene);
-  createBackground(scene);
-  const { invisibleGround, sliderGround } = createGround(scene);
+  const street = new Street(scene);
+  const fence = new Fence(scene);
+  const sky = new Sky(scene);
+  const mountains = new Mountains(scene);
+  const city = new City(scene);
+  const { invisibleGround } = createGround(scene);
   const player = new Player(scene);
 
   await player.initMesh();
+  await street.initMesh();
+  await fence.initMesh();
+  await sky.initMesh();
+  await mountains.initMesh();
+  await city.initMesh();
 
   const light = new HemisphericLight('light', new Vector3(0, 0, 0), scene);
   light.intensity = 2;

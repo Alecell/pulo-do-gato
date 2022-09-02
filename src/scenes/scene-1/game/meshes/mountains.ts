@@ -1,33 +1,30 @@
 import { Color3, Mesh, MeshBuilder, Scene, StandardMaterial, Texture } from 'babylonjs';
+import { APrefab } from '../../../../interfaces/Prefab';
 import { InfiniteBackground } from '../../../../utils/infinite-background/infinite-background';
 
-export function createMountains(scene: Scene) {
-  const mountain = MeshBuilder.CreatePlane('mountain', { width: 20, height: 4 });
-  const mountainMaterial = new StandardMaterial('mountainMaterial', scene);
-  const parent = new Mesh("mountain", scene);
+export class Mountains extends APrefab {
+  async initMesh() {
+    const mountain = MeshBuilder.CreatePlane('mountain', { width: 20, height: 4 });
+    const mountainMaterial = new StandardMaterial('mountainMaterial', this.scene);
+    const parent = new Mesh("mountain", this.scene);
 
-  mountain.position.z = 5;
-  mountain.position.y = 0.3;
+    mountain.position.z = 5;
+    mountain.position.y = 0.3;
 
-  mountainMaterial.diffuseTexture = new Texture("assets/scene-1/textures/mountains.png", scene);
-  mountainMaterial.diffuseTexture.hasAlpha = true;
-  mountainMaterial.specularColor = new Color3(0, 0, 0);
-  mountain.material = mountainMaterial;
+    mountainMaterial.diffuseTexture = new Texture("assets/scene-1/textures/mountains.png", this.scene);
+    mountainMaterial.diffuseTexture.hasAlpha = true;
+    mountainMaterial.specularColor = new Color3(0, 0, 0);
+    mountain.material = mountainMaterial;
 
-  new InfiniteBackground('mountain', [mountain], scene, {
-    velocityX: -0.01,
-    parent,
-    spawnPlace: {
-      z: 17,
-      x: 26,
-      y: 0.1
-    },
-    despawnPlace: {
-      z: 17,
-      x: -15,
-      y: 0.1
-    }
-  })
+    new InfiniteBackground('mountain', [mountain], this.scene, {
+      velocityX: -0.01,
+      parent,
+      spawnPlace: { z: 17, x: 26, y: 0.1 },
+      despawnPlace: { z: 17, x: -15, y: 0.1 }
+    })
+  }
 
-  return mountain;
+  async initSounds() {
+    throw new Error('Method not implemented.');
+  }
 }

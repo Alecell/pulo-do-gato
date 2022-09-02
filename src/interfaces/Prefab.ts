@@ -1,4 +1,4 @@
-import { Mesh, Nullable, Sound, Texture } from 'babylonjs';
+import { Mesh, Nullable, Scene, Sound, Texture } from 'babylonjs';
 import { TGenericObject } from '../utils/types';
 
 export interface IPrefab {
@@ -7,7 +7,7 @@ export interface IPrefab {
 }
 
 export abstract class APrefab implements IPrefab {
-  protected _mesh!: Mesh;
+  protected _mesh!: Mesh | TGenericObject<Mesh>;
   protected _parent!: Mesh;
   protected _texture!: Texture;
   protected _sounds!: TGenericObject<Sound>;
@@ -15,6 +15,8 @@ export abstract class APrefab implements IPrefab {
   events = {};
   states = {};
 
-  abstract initMesh(): void;
-  abstract initSounds(): void;
+  constructor(protected scene: Scene) {}
+
+  abstract initMesh(): Promise<void>;
+  abstract initSounds(): Promise<void>;
 }

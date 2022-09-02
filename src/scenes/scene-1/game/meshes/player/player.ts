@@ -1,5 +1,6 @@
 import { PhysicsImpostor, Scene, SceneLoader, Sound, Mesh, Vector3 } from 'babylonjs';
 import { APrefab  } from '../../../../../interfaces/Prefab';
+import { TGenericObject } from '../../../../../utils/types';
 import { dieAnimation } from './animations';
 
 export class Player extends APrefab {
@@ -11,12 +12,12 @@ export class Player extends APrefab {
     die: this.die.bind(this)
   };
 
-  constructor(private scene: Scene) {
-    super();
+  constructor(scene: Scene) {
+    super(scene);
     this.initSounds();
   }
 
-  initSounds() {
+  async initSounds() {
     const fall = new Sound("fall", "assets/scene-1/songs/fall.mp3", this.scene, null, {
       volume: 0.5
     })
