@@ -12,7 +12,7 @@ import {
 
 import SceneComponent from '../../../components/SceneComponent/SceneComponent';
 
-import "babylonjs";
+import { memo } from 'react';
 import { Player } from './meshes/player/player';
 import { createSky } from './meshes/sky';
 import { createGround } from './meshes/ground';
@@ -20,20 +20,16 @@ import { createBackground } from './meshes/city';
 import { createCamera } from './camera';
 import { move } from './movement/movement';
 import { Obstacles } from './obstacles/obstacles';
-import { memo, useState } from 'react';
 import { createMountains } from './meshes/mountains';
-import { createBackgroundCity } from './meshes/predios-bg';
 import { createStreet } from './meshes/street';
 import { createFence } from './meshes/fence';
 import { IMove } from './types';
-
 
 async function onSceneMount(scene: Scene) {
   const engine = scene.getEngine();
   scene.enablePhysics(null, new AmmoJSPlugin(false));
   
   createCamera(scene);
-  createBackgroundCity(scene);
   createStreet(scene);
   createFence(scene);
   createSky(scene);
@@ -57,14 +53,14 @@ async function onSceneMount(scene: Scene) {
     },
   }
   
-  // new Sound("BgMusic", "/assets/scene-1/songs/bg-music.mp3", scene, null, {
-  //   loop: true,
-  //   autoplay: true,
-  //   volume: 0.2,
-  // });
+  new Sound("BgMusic", "assets/scene-1/songs/bg-music.mp3", scene, null, {
+    loop: true,
+    autoplay: true,
+    volume: 0.2,
+  });
 
   moveOpts = move(scene, player, moveOpts);
-  
+
   player.mesh!.physicsImpostor!.registerOnPhysicsCollide(invisibleGround.physicsImpostor!, () => {
     moveOpts.jumping.canJump = true;
     moveOpts.jumping.isJumping = false;
@@ -74,7 +70,7 @@ async function onSceneMount(scene: Scene) {
     obstacles.spawnWithDelay(1000, 2000);
   });
 
-  scene.debugLayer.show();
+  // scene.debugLayer.show();
 }
 
 function Game() {

@@ -1,5 +1,5 @@
 .score {
-  font-size: 13rem;
+  font-size: 5rem;
   position: absolute;
   top: 5%;
   right: 13%;
@@ -7,7 +7,14 @@
   font-weight: bold;
   color: white;
   z-index: 1;
-  -webkit-text-fill-color: white; 
+  -webkit-text-fill-color: white;
   -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: black;
+  -webkit-user-select: none; 
+  -ms-user-select: none;
+  user-select: none;
+
+  @media screen and (min-width: 1000px) {
+    font-size: 13rem;
+  }
 }

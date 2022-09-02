@@ -4,7 +4,7 @@ import { InfiniteBackground } from '../../../../utils/infinite-background/infini
 export function createStreet(scene: Scene) {
   const street = MeshBuilder.CreatePlane('street', { width: 10, height: 10 });
   const streetMaterial = new StandardMaterial('streetMaterial', scene);
-  const texture = new Texture("/assets/scene-1/textures/street.png", scene);
+  const texture = new Texture("assets/scene-1/textures/street.png", scene);
   const parent = new Mesh("street", scene);
   
   texture.wAng = -Math.PI / 2;

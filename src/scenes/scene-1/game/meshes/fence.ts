@@ -4,7 +4,7 @@ import { InfiniteBackground } from '../../../../utils/infinite-background/infini
 export function createFence(scene: Scene) {
   const fence = MeshBuilder.CreatePlane('fence', { width: 0.2, height: 1 });
   const fenceMaterial = new StandardMaterial('fenceMaterial', scene);
-  const texture = new Texture("/assets/scene-1/textures/fence.png", scene);
+  const texture = new Texture("assets/scene-1/textures/fence.png", scene);
   const parent = new Mesh("fence", scene);
 
   fence.position.z = 5;

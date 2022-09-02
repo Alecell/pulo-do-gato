@@ -20,7 +20,7 @@ function createSliderGround(scene: Scene, container: Mesh) {
   const sliderGround = MeshBuilder.CreateBox('slider-ground', { width: 10, height: 1 });
   const sliderGroundMaterial = new StandardMaterial('groundMaterial', scene);
 
-  sliderGroundMaterial.diffuseTexture = new Texture("/assets/scene-1/textures/ground.png", scene);
+  sliderGroundMaterial.diffuseTexture = new Texture("assets/scene-1/textures/ground.png", scene);
   sliderGroundMaterial.diffuseTexture.hasAlpha = true;
   sliderGroundMaterial.specularColor = new Color3(0, 0, 0);
   sliderGround.material = sliderGroundMaterial;

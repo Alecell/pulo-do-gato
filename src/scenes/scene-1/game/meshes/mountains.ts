@@ -9,7 +9,7 @@ export function createMountains(scene: Scene) {
   mountain.position.z = 5;
   mountain.position.y = 0.3;
 
-  mountainMaterial.diffuseTexture = new Texture("/assets/scene-1/textures/mountains.png", scene);
+  mountainMaterial.diffuseTexture = new Texture("assets/scene-1/textures/mountains.png", scene);
   mountainMaterial.diffuseTexture.hasAlpha = true;
   mountainMaterial.specularColor = new Color3(0, 0, 0);
   mountain.material = mountainMaterial;

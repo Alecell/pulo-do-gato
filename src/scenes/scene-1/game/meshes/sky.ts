@@ -23,7 +23,7 @@ export function createSky(scene: Scene) {
     },
     despawnPlace: {
       z: 20,
-      x: -15,
+      x: -30,
       y: 0
     }
   })

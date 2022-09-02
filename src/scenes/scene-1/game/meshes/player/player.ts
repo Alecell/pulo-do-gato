@@ -17,7 +17,7 @@ export class Player extends APrefab {
   }
 
   initSounds() {
-    const fall = new Sound("fall", "/assets/scene-1/songs/fall.mp3", this.scene, null, {
+    const fall = new Sound("fall", "assets/scene-1/songs/fall.mp3", this.scene, null, {
       volume: 0.5
     })
 
