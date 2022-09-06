@@ -1,20 +1,6 @@
 import { Color3, Color4, Mesh, MeshBuilder, PhysicsImpostor, Scene, StandardMaterial, Texture, Vector3 } from 'babylonjs';
+import { APrefab } from '../../../../interfaces/Prefab';
 import { InfiniteBackground } from '../../../../utils/infinite-background/infinite-background';
-
-export function createGround(scene: Scene) {
-  const container = new Mesh("ground", scene);
-
-  const sliderGround = createSliderGround(scene, container);
-  const invisibleGround = createInvisibleGround(scene);
-
-  container.addChild(sliderGround);
-  container.addChild(invisibleGround);
-
-  return {
-    sliderGround,
-    invisibleGround
-  }
-}
 
 function createSliderGround(scene: Scene, container: Mesh) {
   const sliderGround = MeshBuilder.CreateBox('slider-ground', { width: 10, height: 1 });
@@ -60,4 +46,27 @@ function createInvisibleGround(scene: Scene) {
   return invisibleGround;
 }
 
+export class Ground extends APrefab {
+  async initMesh() {
+    const container = new Mesh("ground", this.scene);
 
+    const sliderGround = createSliderGround(this.scene, container);
+    const invisibleGround = createInvisibleGround(this.scene);
+  
+    container.addChild(sliderGround);
+    container.addChild(invisibleGround);
+
+    this._mesh = {
+      invisibleGround,
+      sliderGround
+    }
+  }
+
+  async initSounds() {
+    throw new Error('Method not implemented.');
+  }
+  
+  get mesh() {
+    return this._mesh;
+  }
+}

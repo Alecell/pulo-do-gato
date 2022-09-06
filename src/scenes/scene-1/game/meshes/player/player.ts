@@ -4,6 +4,9 @@ import { TGenericObject } from '../../../../../utils/types';
 import { dieAnimation } from './animations';
 
 export class Player extends APrefab {
+  // SAVED
+  // declare _mesh: Mesh;
+
   states = {
     died: false,
   };

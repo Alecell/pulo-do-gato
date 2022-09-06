@@ -41,7 +41,7 @@ export class Obstacles implements IObstacles {
   }
 
   private checkObstacleHit(obstacle: Mesh) {
-    if (this.player.mesh?.intersectsMesh(obstacle) && !this.player.states.died) {
+    if ((this.player.mesh as Mesh)?.intersectsMesh(obstacle) && !this.player.states.died) {
       this.player.events.die();
     }
   }
@@ -55,7 +55,7 @@ export class Obstacles implements IObstacles {
 
   private jumpedObstacle(obstacle: Mesh) {
     const pointPlane = obstacle.getChildMeshes()[0];
-    const intersected = pointPlane ? pointPlane.intersectsMesh(this.player.mesh!) : false;
+    const intersected = pointPlane ? pointPlane.intersectsMesh(this.player.mesh! as Mesh) : false;
 
     if (intersected) {
       pointPlane.dispose();

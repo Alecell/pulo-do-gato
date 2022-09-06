@@ -16,8 +16,8 @@ function playerJump(player: Player, scene: Scene, tempOpts: IMove) {
   if (player && player.mesh.physicsImpostor) {
     tempOpts.jumping.isJumping = true;
     tempOpts.jumping.canJump = false;
-    player.mesh.physicsImpostor.setLinearVelocity(new Vector3(0, 0, 0));
-    player.mesh.physicsImpostor.applyImpulse(impulseDirection.scale(impulseMagnitude), player.mesh.getAbsolutePosition());
+    (player.mesh as Mesh).physicsImpostor!.setLinearVelocity(new Vector3(0, 0, 0));
+    player.mesh.physicsImpostor.applyImpulse(impulseDirection.scale(impulseMagnitude), (player.mesh as Mesh).getAbsolutePosition());
   }
 }
 
