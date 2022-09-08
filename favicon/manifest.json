@@ -1,7 +1,7 @@
 {
  "short_name": "Catrun",
  "name": "Catrun - JavaScript and BabylonJS",
- "start_url": ".",
+ "start_url": "/catrun",
  "display": "standalone",
  "theme_color": "#c18018",
  "background_color": "#c18018",
