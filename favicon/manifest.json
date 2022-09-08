@@ -5,6 +5,7 @@
  "display": "standalone",
  "theme_color": "#c18018",
  "background_color": "#c18018",
+ "orientation": "landscape",
  "icons": [
   {
    "src": "\/catrun\/android-icon-36x36.png",
