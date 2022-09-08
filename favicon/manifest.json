@@ -2,7 +2,7 @@
  "short_name": "Catrun",
  "name": "Catrun - JavaScript and BabylonJS",
  "description": "A game made with javacript, babylonjs and maizena",
- "start_url": "/catrun",
+ "start_url": "/catrun/",
  "display": "standalone",
  "theme_color": "#c18018",
  "background_color": "#c18018",
