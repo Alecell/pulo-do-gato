@@ -16,6 +16,10 @@ export class Mountains extends APrefab {
     mountainMaterial.specularColor = new Color3(0, 0, 0);
     mountain.material = mountainMaterial;
 
+    mountainMaterial.diffuseTexture.wrapU = Texture.CLAMP_ADDRESSMODE;
+    mountainMaterial.diffuseTexture.wrapV = Texture.CLAMP_ADDRESSMODE;
+
+
     new InfiniteBackground('mountain', [mountain], this.scene, {
       velocityX: -0.01,
       parent,

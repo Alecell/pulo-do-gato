@@ -17,6 +17,9 @@ export class Fence extends APrefab {
     fenceMaterial.specularColor = new Color3(0, 0, 0);
     fence.material = fenceMaterial;
 
+    fenceMaterial.diffuseTexture.wrapU = Texture.CLAMP_ADDRESSMODE;
+    fenceMaterial.diffuseTexture.wrapV = Texture.CLAMP_ADDRESSMODE;
+
     new InfiniteBackground('fence', [fence], this.scene, {
       velocityX: -0.05,
       parent,

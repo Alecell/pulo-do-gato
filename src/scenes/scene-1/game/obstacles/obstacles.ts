@@ -1,7 +1,4 @@
 import { Mesh, MeshBuilder, Scene, SceneLoader, Sound, StandardMaterial, Vector3 } from 'babylonjs';
-import cloneDeep from 'lodash.clonedeep';
-import { stringify } from 'querystring';
-import { IPrefab } from '../../../../interfaces/Prefab';
 import { Store } from '../../../../store/store';
 import { Player } from '../meshes/player/player';
 import { IObstacles } from './types';
@@ -30,7 +27,7 @@ export class Obstacles implements IObstacles {
       for (let i = this.activeElement.length - 1; i >= 0; i--) {
         this.activeElement[i].position.x += -0.05 * animationRatio;
 
-        if (this.jumpedObstacle(this.activeElement[i])) {
+        if (this.jumpedObstacle(this.activeElement[i]) && !this.player.states.died) {
           Store.onUpdateScore.notifyObservers(++Store.score);
         }
 

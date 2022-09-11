@@ -9,15 +9,19 @@ function playerJump(player: Player, scene: Scene, tempOpts: IMove) {
   });
 
   const impulseDirection = new Vector3(0, 1, 0);
-  const impulseMagnitude = 4.5;
+  const impulseMagnitude = 10.5;
 
   jump.play();
 
   if (player && player.mesh.physicsImpostor) {
+    const animationRatio = scene.getAnimationRatio();
     tempOpts.jumping.isJumping = true;
     tempOpts.jumping.canJump = false;
     (player.mesh as Mesh).physicsImpostor!.setLinearVelocity(new Vector3(0, 0, 0));
-    player.mesh.physicsImpostor.applyImpulse(impulseDirection.scale(impulseMagnitude), (player.mesh as Mesh).getAbsolutePosition());
+    player.mesh.physicsImpostor.applyImpulse(
+      impulseDirection.scale(impulseMagnitude * animationRatio), 
+      (player.mesh as Mesh).getAbsolutePosition()
+    );
   }
 }
 

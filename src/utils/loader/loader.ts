@@ -1,5 +1,7 @@
+import { UIEvents } from '../../store/ui';
+
 export const loader = async (assets: Promise<void>[]) => {
-  //  show loading screen
-  await Promise.all(assets)
-  //  hide load screen
+  UIEvents.onUpdateLoading.notifyObservers(true);
+  await Promise.all(assets);
+  UIEvents.onUpdateLoading.notifyObservers(false);
 }

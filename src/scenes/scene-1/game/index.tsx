@@ -30,7 +30,7 @@ import { loader } from '../../../utils/loader/loader';
 
 async function onSceneMount(scene: Scene) {
   scene.enablePhysics(null, new AmmoJSPlugin(false));
-  
+
   createCamera(scene);
   const street = new Street(scene);
   const fence = new Fence(scene);
@@ -88,7 +88,7 @@ function Game() {
     <SceneComponent 
       antialias 
       id="babylonscene"
-      adaptToDeviceRatio 
+      adaptToDeviceRatio
       onSceneReady={onSceneMount} 
     />
   );
