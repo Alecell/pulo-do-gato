@@ -80,7 +80,7 @@ async function onSceneMount(scene: Scene) {
     obstacles.spawnWithDelay(1000, 2000);
   });
 
-  // scene.debugLayer.show();
+  scene.debugLayer.show();
 }
 
 function Game() {

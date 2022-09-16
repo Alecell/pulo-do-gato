@@ -3,26 +3,29 @@ import { APrefab } from '../../../../interfaces/Prefab';
 import { InfiniteBackground } from '../../../../utils/infinite-background/infinite-background';
 
 function createSliderGround(scene: Scene, container: Mesh) {
-  const sliderGround = MeshBuilder.CreateBox('slider-ground', { width: 10, height: 1 });
+  const sliderGround = MeshBuilder.CreatePlane('slider-ground', { width: 10, height: 2 });
   const sliderGroundMaterial = new StandardMaterial('groundMaterial', scene);
 
-  sliderGroundMaterial.diffuseTexture = new Texture("assets/scene-1/textures/ground.png", scene);
-  sliderGroundMaterial.diffuseTexture.hasAlpha = true;
+  sliderGroundMaterial.diffuseTexture = new Texture("assets/scene-1/textures/calcada.png", scene);
   sliderGroundMaterial.specularColor = new Color3(0, 0, 0);
   sliderGround.material = sliderGroundMaterial;
+  sliderGround.rotationQuaternion = null;
+  sliderGround.rotation.x = Math.PI / 2;
+  sliderGround.position.y = -1.02;
+  sliderGround.position.z = 3.36;
 
   new InfiniteBackground('slider-ground', [sliderGround], scene, {
     velocityX: -0.05, 
     parent: container, 
     spawnPlace: {
       x: 8,
-      z: 3.55,
-      y: -1.5
+      z: 3.36,
+      y: -1.02
     },
     despawnPlace: {
       x: -8,
-      z: 3.55,
-      y: -1.5
+      z: 3.36,
+      y: -1.02
     },
   });
 
