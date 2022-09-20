@@ -3,6 +3,7 @@ import { Observable } from 'babylonjs';
 const UISingleton = function (this: any) {
   this.isLoading = false;
   this.onUpdateLoading = new Observable();
+  this.onGameOver = new Observable();
 
   return this;
 } as any as { new (): any; };

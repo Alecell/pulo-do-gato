@@ -1,5 +1,6 @@
 import { Mesh, MeshBuilder, Scene, SceneLoader, Sound, StandardMaterial, Vector3 } from 'babylonjs';
 import { Store } from '../../../../store/store';
+import { UIEvents } from '../../../../store/ui';
 import { Player } from '../meshes/player/player';
 import { IObstacles } from './types';
 
@@ -20,6 +21,16 @@ export class Obstacles implements IObstacles {
   ) {
     this.container = new Mesh("obstacles-container");
     this.createObstaclesLimit();
+
+    UIEvents.onGameOver.add((gameover: boolean) => {
+      if (!gameover) {
+        this.activeElement.forEach(obstacle => {
+          obstacle.dispose();
+        });
+
+        this.activeElement = [];
+      }
+    });
 
     this.scene.onBeforeRenderObservable.add(() => {
       const animationRatio = this.scene.getAnimationRatio();
