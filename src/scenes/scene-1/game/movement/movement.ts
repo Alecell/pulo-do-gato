@@ -2,6 +2,7 @@ import { ActionManager, ExecuteCodeAction, Mesh, Scene, Sound, Vector3 } from 'b
 import { Player } from '../meshes/player/player';
 import { IMove } from '../types';
 import { isMobile } from 'react-device-detect';
+import { UIEvents } from '../../../../store/ui';
 
 function playerJump(player: Player, scene: Scene, tempOpts: IMove) {
   const jump = new Sound("jump", "assets/scene-1/songs/jump.mp3", scene, null, {
@@ -14,7 +15,6 @@ function playerJump(player: Player, scene: Scene, tempOpts: IMove) {
   jump.play();
 
   if (player && player.mesh.physicsImpostor) {
-    const animationRatio = scene.getAnimationRatio();
     tempOpts.jumping.isJumping = true;
     tempOpts.jumping.canJump = false;
 
@@ -32,6 +32,13 @@ export function move(scene: Scene, player: Player, opts: IMove): IMove {
   const newScene = scene;
 
   newScene.actionManager = new ActionManager(scene);
+
+  UIEvents.onGameOver.add((gameover: boolean) => {
+    if (!gameover) {
+      opts.jumping.canJump = true;
+      opts.jumping.isJumping = false;
+    }
+  });
 
   newScene.actionManager.registerAction(
     new ExecuteCodeAction(ActionManager.OnKeyDownTrigger, function handleKeyDown(evt) {

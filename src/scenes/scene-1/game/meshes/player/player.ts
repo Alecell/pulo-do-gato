@@ -3,6 +3,8 @@ import { APrefab  } from '../../../../../interfaces/Prefab';
 import { TGenericObject } from '../../../../../utils/types';
 import { dieAnimation } from './animations';
 import { UIEvents } from '../../../../../store/ui';
+import { Ground } from '../ground';
+import { IMove } from '../../types';
 
 export class Player extends APrefab {
   // SAVED
@@ -16,7 +18,7 @@ export class Player extends APrefab {
     die: this.die.bind(this)
   };
 
-  constructor(scene: Scene) {
+  constructor(private ground: Ground, scene: Scene, private moveOpts: IMove) {
     super(scene);
     this.initSounds();
 
@@ -24,7 +26,6 @@ export class Player extends APrefab {
       if (!gameover) {
         this.states.died = false;
 
-        this._mesh.physicsImpostor?.dispose();
         this._mesh.position = new Vector3(-1.5, 1, 3.55);
         (this._mesh as Mesh).rotation.x = -Math.PI / 2;
 
@@ -34,6 +35,11 @@ export class Player extends APrefab {
         );
 
         this._mesh.rotationQuaternion = null;
+
+        (this._mesh as Mesh).physicsImpostor!.registerOnPhysicsCollide((ground.mesh as TGenericObject<Mesh>).invisibleGround.physicsImpostor!, () => {
+          moveOpts.jumping.canJump = true;
+          moveOpts.jumping.isJumping = false;
+        });
       }
     });
   }
@@ -72,6 +78,11 @@ export class Player extends APrefab {
 
     player.rotationQuaternion = null;
     this._mesh = player;
+
+    (this._mesh as Mesh).physicsImpostor!.registerOnPhysicsCollide((this.ground.mesh as TGenericObject<Mesh>).invisibleGround.physicsImpostor!, () => {
+      this.moveOpts.jumping.canJump = true;
+      this.moveOpts.jumping.isJumping = false;
+    });
   }
 
   get mesh() {

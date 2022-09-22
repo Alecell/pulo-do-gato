@@ -25,20 +25,27 @@ import { Mountains } from './meshes/mountains';
 import { Street } from './meshes/street';
 import { Fence } from './meshes/fence';
 import { IMove } from './types';
-import { TGenericObject } from '../../../utils/types';
 import { loader } from '../../../utils/loader/loader';
 
 async function onSceneMount(scene: Scene) {
   scene.enablePhysics(null, new AmmoJSPlugin(false));
-
   createCamera(scene);
+
+  let moveOpts: IMove = {
+    jumping: {
+      canJump: false,
+      isJumping: false,
+      jumpStartTime: 0,
+    },
+  }
+
   const street = new Street(scene);
   const fence = new Fence(scene);
   const sky = new Sky(scene);
   const mountains = new Mountains(scene);
   const city = new City(scene);
   const ground = new Ground(scene);
-  const player = new Player(scene);
+  const player = new Player(ground, scene, moveOpts);
 
   await loader([
     player.initMesh(),
@@ -52,44 +59,26 @@ async function onSceneMount(scene: Scene) {
 
   const light = new HemisphericLight('light', new Vector3(0, 0, 0), scene);
   light.intensity = 2;
-  const obstacles = new Obstacles(scene, player);
-  await obstacles.init();
-
-  let moveOpts: IMove = {
-    jumping: {
-      canJump: false,
-      isJumping: false,
-      jumpStartTime: 0,
-    },
-  }
+  new Obstacles(scene, player);
   
-  new Sound("BgMusic", "assets/scene-1/songs/bg-music.mp3", scene, null, {
-    loop: true,
-    autoplay: true,
-    volume: 0.2,
-  });
+  // new Sound("BgMusic", "assets/scene-1/songs/bg-music.mp3", scene, null, {
+  //   loop: true,
+  //   autoplay: true,
+  //   volume: 0.2,
+  // });
 
   moveOpts = move(scene, player, moveOpts);
-
-  (player.mesh as Mesh).physicsImpostor!.registerOnPhysicsCollide((ground.mesh as TGenericObject<Mesh>).invisibleGround.physicsImpostor!, () => {
-    moveOpts.jumping.canJump = true;
-    moveOpts.jumping.isJumping = false;
-  });
-  
-  scene.onBeforeRenderObservable.add(() => {
-    obstacles.spawnWithDelay(1000, 2000);
-  });
 
   scene.debugLayer.show();
 }
 
 function Game() {
   return (
-    <SceneComponent 
-      antialias 
+    <SceneComponent
+      antialias
       id="babylonscene"
       adaptToDeviceRatio
-      onSceneReady={onSceneMount} 
+      onSceneReady={onSceneMount}
     />
   );
 }

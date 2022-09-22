@@ -1,6 +1,6 @@
 import { Mesh, Scene, Vector3 } from 'babylonjs';
 import { ChainedList, ListNode } from '../chained-list/chained-list';
-import { IInfiniteBackground, TCoordinates, TInstance, TOptions } from './types';
+import { IInfiniteBackground, TCoordinates, TOptions } from './types';
 
 /**
  * TODO:

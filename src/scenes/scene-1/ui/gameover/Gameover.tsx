@@ -1,3 +1,4 @@
+import { Store } from '../../../../store/store';
 import { UIEvents } from '../../../../store/ui';
 import scss from './gameover.module.scss';
 
@@ -5,6 +6,8 @@ function Gameover() {
 
   const restartGame = () => {
     UIEvents.onGameOver.notifyObservers(false);
+    Store.onUpdateScore.notifyObservers(0);
+    document.getElementById('babylonscene')?.focus();
   };
 
   return (

@@ -1,4 +1,5 @@
 import { Mesh, MeshBuilder, Scene, SceneLoader, Sound, StandardMaterial, Vector3 } from 'babylonjs';
+import { start } from 'repl';
 import { Store } from '../../../../store/store';
 import { UIEvents } from '../../../../store/ui';
 import { Player } from '../meshes/player/player';
@@ -19,6 +20,7 @@ export class Obstacles implements IObstacles {
     private scene: Scene, 
     private player: Player,
   ) {
+    this.createObstacles();
     this.container = new Mesh("obstacles-container");
     this.createObstaclesLimit();
 
@@ -29,6 +31,14 @@ export class Obstacles implements IObstacles {
         });
 
         this.activeElement = [];
+      }
+    });
+
+    UIEvents.onStartgame.add((startgame: boolean) => {
+      if (!startgame) {
+        scene.onBeforeRenderObservable.add(() => {
+          this.spawnWithDelay(1000, 2000);
+        });
       }
     });
 
@@ -169,10 +179,6 @@ export class Obstacles implements IObstacles {
     this.obstacleLimit.position = new Vector3(-10, 0, 3.5);
     this.obstacleLimit.rotationQuaternion = null;
     this.obstacleLimit.rotation.y = -Math.PI / 2;
-  }
-  
-  init() {
-    this.createObstacles();
   }
 
   spawnWithDelay(minDelay: number, maxDelay: number) {

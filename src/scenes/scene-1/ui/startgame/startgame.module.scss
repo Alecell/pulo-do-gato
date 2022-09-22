@@ -1,0 +1,56 @@
+.container {
+  background-color: #c18018;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-size: 3.6em;
+  text-align: center;
+  height: 100vh;
+  position: relative;
+  z-index: 2;
+  pointer-events: all;
+
+  .message {
+    font-family: "Comic Sans", cursive;
+    font-size: 1em;
+    max-width: 90%;
+    -webkit-user-select: none; 
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #5b3a06;
+  }
+
+  .tip {
+    font-family: "Comic Sans", cursive;
+    font-size: 0.1em;
+    max-width: 90%;
+    color: #3d2a0b;
+  }
+
+  .init {
+    margin-top: 1.8em;
+    font-size: 0.6em;
+    padding: 0.5em 1em;
+    pointer-events: all;
+    background-color: #5b3a06;
+    border: solid 0.06em white;
+    border-radius: 34px;
+    color: white;
+    cursor: pointer;
+    transition: .34s all ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@media screen and (min-width: 62.5em) {
+  .container {
+    font-size: 12em;
+  }
+}
