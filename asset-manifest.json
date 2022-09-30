@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "./static/css/main.1f5d92bf.chunk.css",
-    "main.js": "./static/js/main.20074d98.chunk.js",
-    "main.js.map": "./static/js/main.20074d98.chunk.js.map",
+    "main.css": "./static/css/main.27992090.chunk.css",
+    "main.js": "./static/js/main.04a22536.chunk.js",
+    "main.js.map": "./static/js/main.04a22536.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.b407b846.js",
     "runtime-main.js.map": "./static/js/runtime-main.b407b846.js.map",
     "static/js/2.a77d3daf.chunk.js": "./static/js/2.a77d3daf.chunk.js",
@@ -13,15 +13,17 @@
     "service-worker.js": "./service-worker.js",
     "service-worker.js.LICENSE.txt": "./service-worker.js.LICENSE.txt",
     "service-worker.js.map": "./service-worker.js.map",
-    "static/css/main.1f5d92bf.chunk.css.map": "./static/css/main.1f5d92bf.chunk.css.map",
+    "static/css/main.27992090.chunk.css.map": "./static/css/main.27992090.chunk.css.map",
     "static/js/2.a77d3daf.chunk.js.LICENSE.txt": "./static/js/2.a77d3daf.chunk.js.LICENSE.txt",
     "static/media/index.css": "./static/media/ComicSans.c1a22c54.eot",
+    "static/media/click-sound-effect.848866fb.mp3": "./static/media/click-sound-effect.848866fb.mp3",
+    "static/media/hover-sound-effect.c151afb9.mp3": "./static/media/hover-sound-effect.c151afb9.mp3",
     "static/media/loading-screen.33f82ac5.png": "./static/media/loading-screen.33f82ac5.png"
   },
   "entrypoints": [
     "static/js/runtime-main.b407b846.js",
     "static/js/2.a77d3daf.chunk.js",
-    "static/css/main.1f5d92bf.chunk.css",
-    "static/js/main.20074d98.chunk.js"
+    "static/css/main.27992090.chunk.css",
+    "static/js/main.04a22536.chunk.js"
   ]
 }
