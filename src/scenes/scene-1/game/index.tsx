@@ -1,15 +1,4 @@
-import {
-  Vector3,
-  HemisphericLight,
-  Scene,
-  AmmoJSPlugin,
-  PhysicsImpostor,
-  MeshBuilder,
-  SceneLoader,
-  Color4,
-  Sound,
-  Mesh,
-} from 'babylonjs';
+import { AmmoJSPlugin, HemisphericLight, Scene, Sound, Vector3 } from 'babylonjs';
 
 import SceneComponent from '../../../components/SceneComponent/SceneComponent';
 

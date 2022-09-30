@@ -5,14 +5,8 @@ import { isMobile } from 'react-device-detect';
 import { UIEvents } from '../../../../store/ui';
 
 function playerJump(player: Player, scene: Scene, tempOpts: IMove) {
-  const jump = new Sound("jump", "assets/scene-1/songs/jump.mp3", scene, null, {
-    volume: 0.5
-  });
-
   const impulseDirection = new Vector3(0, 1, 0);
   const impulseMagnitude = 5.5;
-
-  jump.play();
 
   if (player && player.mesh.physicsImpostor) {
     tempOpts.jumping.isJumping = true;
@@ -30,6 +24,10 @@ export function move(scene: Scene, player: Player, opts: IMove): IMove {
   const tempOpts = { ...opts };
   const inputMap: { [key: string]: boolean } = {};
   const newScene = scene;
+
+  const jump = new Sound("jump", "assets/scene-1/songs/jump.mp3", scene, null, {
+    volume: 0.3,
+  });
 
   newScene.actionManager = new ActionManager(scene);
 
@@ -60,6 +58,7 @@ export function move(scene: Scene, player: Player, opts: IMove): IMove {
 
   newScene.onBeforeRenderObservable.add(() => {
     if (inputMap[' '] && tempOpts.jumping.canJump) {
+      jump.play();
       playerJump(player, scene, tempOpts);
     }
   });

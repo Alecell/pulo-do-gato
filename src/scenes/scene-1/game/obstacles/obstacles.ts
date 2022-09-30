@@ -17,7 +17,7 @@ export class Obstacles implements IObstacles {
   private obstacleCounter = 0;
 
   constructor(
-    private scene: Scene, 
+    private scene: Scene,
     private player: Player,
   ) {
     this.createObstacles();
@@ -93,7 +93,7 @@ export class Obstacles implements IObstacles {
 
       if (isMinDelay) {
         shouldSpawn = Math.random() > 0.5;
-        
+
         if (isMaxDelay) shouldSpawn = true;
       }
     }
@@ -106,7 +106,7 @@ export class Obstacles implements IObstacles {
   private generateElement() {
     const obstacle = this.obstacleCounter;
     let kind = this.obstacles;
-    
+
     const index = Math.floor(Math.random() * kind.length);
 
     this.obstacleCounter++;
@@ -118,18 +118,18 @@ export class Obstacles implements IObstacles {
     const obstacle = this.generateElement();
     const pointPlane = MeshBuilder.CreatePlane('pointPlane', { width: 1, height: 5 }, this.scene);
     const planeMaterial = new StandardMaterial('planeMateral', this.scene);
-    
+
     obstacle.position.z = 3.55;
     obstacle.position.y = -1;
     obstacle.position.x = 3;
-    
+
     planeMaterial.alpha = 0;
     pointPlane.rotation.y = Math.PI / 2;
     pointPlane.material = planeMaterial;
     pointPlane.position = new Vector3(3, -1, 3.55);
 
     obstacle.addChild(pointPlane);
-    this.container.addChild(obstacle);    
+    this.container.addChild(obstacle);
     this.activeElement.push(obstacle);
   }
 
@@ -151,7 +151,7 @@ export class Obstacles implements IObstacles {
     this.container.addChild(dog.meshes[0]);
 
     const cone = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/obstacles/cone/`, "cone.babylon", this.scene);
-    cone.meshes[0].scaling = new Vector3(0.5, 0.5, 0.5); 
+    cone.meshes[0].scaling = new Vector3(0.5, 0.5, 0.5);
     cone.meshes[0].rotationQuaternion = null;
     cone.meshes[0].rotation.y = Math.PI / 2;
     cone.meshes[0].position.z = -100;
@@ -159,7 +159,7 @@ export class Obstacles implements IObstacles {
     this.container.addChild(cone.meshes[0]);
 
     const bucket = await SceneLoader.ImportMeshAsync(null, `assets/scene-1/meshes/obstacles/bucket/`, "bucket.babylon", this.scene);
-    bucket.meshes[0].scaling = new Vector3(0.005, 0.005, 0.005); 
+    bucket.meshes[0].scaling = new Vector3(0.005, 0.005, 0.005);
     bucket.meshes[0].rotationQuaternion = null;
     bucket.meshes[0].rotation.y = Math.PI / 2;
     bucket.meshes[0].position.z = -100;
@@ -175,7 +175,7 @@ export class Obstacles implements IObstacles {
   }
 
   private createObstaclesLimit() {
-    this.obstacleLimit = MeshBuilder.CreatePlane("plane", { width: 10, height: 10 }, this.scene);
+    this.obstacleLimit = MeshBuilder.CreatePlane('plane', { width: 10, height: 10 }, this.scene);
     this.obstacleLimit.position = new Vector3(-10, 0, 3.5);
     this.obstacleLimit.rotationQuaternion = null;
     this.obstacleLimit.rotation.y = -Math.PI / 2;

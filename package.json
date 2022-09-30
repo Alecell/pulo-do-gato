@@ -1,5 +1,5 @@
 {
-  "name": "react-typescript-babylonjs",
+  "name": "pulo-do-gato",
   "version": "0.1.0",
   "private": true,
   "homepage": ".",
@@ -43,7 +43,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "PUBLIC_URL=https://alecell.github.io/catrun/&&npm run build",
+    "predeploy": "PUBLIC_URL=https://alecell.github.io/pulo-do-gato/&&npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {

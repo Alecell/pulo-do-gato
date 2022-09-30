@@ -63,6 +63,7 @@ export class InfiniteBackground {
 
     this.meshes.forEach(mesh => {
       mesh.setEnabled(false);
+      this.parent?.addChild(mesh);
     });
   }
 
