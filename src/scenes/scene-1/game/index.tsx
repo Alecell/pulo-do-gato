@@ -1,4 +1,4 @@
-import { AmmoJSPlugin, HemisphericLight, Scene, Sound, Vector3 } from 'babylonjs';
+import { AmmoJSPlugin, HemisphericLight, ImageProcessingPostProcess, Scene, Sound, TonemappingOperator, TonemapPostProcess, Vector3 } from 'babylonjs';
 
 import SceneComponent from '../../../components/SceneComponent/SceneComponent';
 
@@ -18,7 +18,7 @@ import { loader } from '../../../utils/loader/loader';
 
 async function onSceneMount(scene: Scene) {
   scene.enablePhysics(null, new AmmoJSPlugin(false));
-  createCamera(scene);
+  const camera = createCamera(scene);
 
   let moveOpts: IMove = {
     jumping: {
@@ -50,15 +50,13 @@ async function onSceneMount(scene: Scene) {
   light.intensity = 2;
   new Obstacles(scene, player);
   
-  // new Sound("BgMusic", "assets/scene-1/songs/bg-music.mp3", scene, null, {
-  //   loop: true,
-  //   autoplay: true,
-  //   volume: 0.2,
-  // });
+  new Sound("BgMusic", "assets/scene-1/songs/bg-music.mp3", scene, null, {
+    loop: true,
+    autoplay: true,
+    volume: 0.2,
+  });
 
   moveOpts = move(scene, player, moveOpts);
-
-  scene.debugLayer.show();
 }
 
 function Game() {
